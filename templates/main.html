@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Eventos | Todo Eventos Chaco
+{% endblock %}
+
+{% block body %}
+
+	<div id='container'>
+
+		<nav class='bloque'>
+			{% block nav %}
+				<ul>
+					<li><a href='/'>Eventos</li>
+					<li><a href='/carteleras/'>Cartelera</li>
+					<li><a href='/galerias/'>Galeria</li>
+					<li><a href='/servicios/'>Servicios</li>
+					<li><a href='/noches/'>Noche</li>
+					<li><a href='/chicas/'>Chicas</li>
+					<li><a href='/comentarios/'>Comentarios</li>
+				</ul>
+			{% endblock %}
+		</nav>
+
+
+	</div>
+
+{% endblock %}

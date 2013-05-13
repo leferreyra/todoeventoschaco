@@ -8,8 +8,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
 
-   	url(r'^eventos/(?P<id_evento>\d+)$', 'todoeventos.views.detalle_evento'),
     url(r'^$', "todoeventos.views.eventos"),
+   	url(r'^evento/(?P<id_evento>\d+)$', 'todoeventos.views.detalle_evento'),
    	url(r'^cartelera/(?P<id_cartelera>\d+)$', 'todoeventos.views.detalle_cartelera'),
    	url(r'^carteleras/' , 'todoeventos.views.carteleras'),
    	url(r'^noche/(?P<id_noche>\d+)$', 'todoeventos.views.detalle_noche'),
@@ -19,6 +19,6 @@ urlpatterns = patterns('',
     url(r'^comentarios/' , 'todoeventos.views.comentarios'),
     url(r'^comercio/(?P<id_comercio>\d+)$' , 'todoeventos.views.detalle_comercio'),
     url(r'^servicio/(?P<id_servicio>\d+)$' , 'todoeventos.views.detalle_servicio'),    
-    url(r'contacto', 'todoeventos.views.contacto'),
+    url(r'^contacto', 'todoeventos.views.contacto'),
    	
 )
