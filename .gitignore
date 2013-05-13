@@ -1,4 +1,17 @@
 *.log
 *.pot
 *.pyc
-local_settings.py
+settings.py
+
+# Settings en Produccion
+prod_settings.py
+
+# Archivos de DDBB de desarrollo
+*.db
+
+# Carpeta de medios
+media
+
+# Archivos temporales
+*~
+
