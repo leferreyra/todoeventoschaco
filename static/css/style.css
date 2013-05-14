@@ -44,3 +44,8 @@ nav ul li {
 	margin: 20px auto 0px;
 	min-height: 600px;
 }
+
+#slider {
+	height: 300px;
+	background: transparent;
+}
