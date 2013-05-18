@@ -1,74 +1,77 @@
 {% extends "base.html" %}
 
 {% block title %}
-	Eventos | Todo Eventos Chaco
+    Eventos | Todo Eventos Chaco
 {% endblock %}
 
 
 {% block head %}
     <link rel="stylesheet" href="{{ STATIC_URL }}nivo-slider/themes/default/default.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}nivo-slider/nivo-slider.css">
-	<script src='{{ STATIC_URL }}nivo-slider/jquery.nivo.slider.pack.js'></script>
-	<script>
-		$(window).load(function(){
-			$("#slider").nivoSlider({
-		        effect: 'random', // Specify sets like: 'fold,fade,sliceDown'
-		        slices: 15, // For slice animations
-		        boxCols: 8, // For box animations
-		        boxRows: 4, // For box animations
-		        animSpeed: 500, // Slide transition speed
-		        pauseTime: 3000, // How long each slide will show
-		        startSlide: 0, // Set starting Slide (0 index)
-		        directionNav: true, // Next & Prev navigation
-		        controlNav: false, // 1,2,3... navigation
-		        controlNavThumbs: false, // Use thumbnails for Control Nav
-		        pauseOnHover: true, // Stop animation while hovering
-		        manualAdvance: false, // Force manual transitions
-		        prevText: 'Anterior', // Prev directionNav text
-		        nextText: 'Siguiente', // Next directionNav text
-		        randomStart: false, // Start on a random slide
-		        beforeChange: function(){}, // Triggers before a slide transition
-		        afterChange: function(){}, // Triggers after a slide transition
-		        slideshowEnd: function(){}, // Triggers after all slides have been shown
-		        lastSlide: function(){}, // Triggers when last slide is shown
-		        afterLoad: function(){} // Triggers when slider has loaded
-		    });
-		});
-	</script>
+    <script src='{{ STATIC_URL }}nivo-slider/jquery.nivo.slider.pack.js'></script>
+    <script>
+        $(window).load(function(){
+            $("#slider").nivoSlider({
+                effect: 'random', // Specify sets like: 'fold,fade,sliceDown'
+                slices: 15, // For slice animations
+                boxCols: 8, // For box animations
+                boxRows: 4, // For box animations
+                animSpeed: 500, // Slide transition speed
+                pauseTime: 3000, // How long each slide will show
+                startSlide: 0, // Set starting Slide (0 index)
+                directionNav: true, // Next & Prev navigation
+                controlNav: false, // 1,2,3... navigation
+                controlNavThumbs: false, // Use thumbnails for Control Nav
+                pauseOnHover: true, // Stop animation while hovering
+                manualAdvance: false, // Force manual transitions
+                prevText: 'Anterior', // Prev directionNav text
+                nextText: 'Siguiente', // Next directionNav text
+                randomStart: false, // Start on a random slide
+                beforeChange: function(){}, // Triggers before a slide transition
+                afterChange: function(){}, // Triggers after a slide transition
+                slideshowEnd: function(){}, // Triggers after all slides have been shown
+                lastSlide: function(){}, // Triggers when last slide is shown
+                afterLoad: function(){} // Triggers when slider has loaded
+            });
+        });
+    </script>
 {% endblock %}
 
 {% block body %}
 
-	<div id='container'>
+    <div id='container'>
 
-		<nav class='bloque'>
-			{% block nav %}
-				<ul>
-					<li><a href='/'>Eventos</li>
-					<li><a href='/carteleras/'>Cartelera</a></li>
-					<li><a href='/galerias/'>Galeria</a></li>
-					<li><a href='/servicios/'>Servicios</a></li>
-					<li><a href='/noches/'>Noche</a></li>
-					<li><a href='/chicas/'>Chicas</a></li>
-					<li><a href='/comentarios/'>Comentarios</a></li>
-				</ul>
-			{% endblock %}
-		</nav>
+        <nav class='bloque'>
+            {% block nav %}
+                <ul>
+                    <li><a href='/'>Eventos</li>
+                    <li><a href='/carteleras/'>Cartelera</a></li>
+                    <li><a href='/galerias/'>Galeria</a></li>
+                    <li><a href='/servicios/'>Servicios</a></li>
+                    <li><a href='/noches/'>Noche</a></li>
+                    <li><a href='/chicas/'>Chicas</a></li>
+                    <li><a href='/comentarios/'>Comentarios</a></li>
+                </ul>
+            {% endblock %}
+        </nav>
 
-		<div class="slider-wrapper theme-default bloque">
-			<div id='slider' class='nivoSlider'>
-				<img src="{{ STATIC_URL }}megan/megan1.jpg" alt="">
-				<img src="{{ STATIC_URL }}megan/megan2.jpg" alt="">
-				<img src="{{ STATIC_URL }}megan/megan3.jpg" alt="">
-				<img src="{{ STATIC_URL }}megan/megan4.jpg" alt="">
-			</div>
-		</div>
+        <div class="slider-wrapper theme-default bloque">
+            <div id='slider' class='nivoSlider'>
+                {% for banner in banners %}
+                    <img src="{{ banner.url_imagen_del_banner }}" alt="{{ banner.titulo }}">
+                {% endfor %}
+            </div>
+        </div>
 
-		<footer class='bloque'>
-			{# Contenido del footer #}
-		</footer>
+        {% block content %}
+            {# Contenido de la pagina #}
+        {% endblock %}
+
+        <footer class='bloque'>
+            {# Contenido del footer #}
+        </footer>
 
 
-	</div>
+    </div>
 
 {% endblock %}

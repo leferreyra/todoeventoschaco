@@ -2,7 +2,14 @@
 /* Estilos para main.html */
 
 body {
-	margin: 0px;
+	position:absolute;
+	top: 0px;
+	width: 100%;
+	background-image: url("../img/background.jpg");
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 
 nav {
@@ -41,6 +48,57 @@ footer {
 	width: 100%;
 	margin-bottom: 20px;
 	border-radius: 3px;
+}
+
+.content-wrapper {
+	overflow: auto;
+}
+
+.columna {
+	float: left;
+	margin-right: 10px;
+}
+
+.columna:last-child {
+	margin-right: 0px;
+	float: right;
+}
+
+.columna.izquierda, .columna.derecha {
+	width: 250px;
+}
+
+.columna.central {
+	width: 440px;
+}
+
+.articulo h2 {
+	font-size: 16px;
+	font-weight: normal;
+	padding: 10px;
+	color: yellow;
+	margin: 0px;
+}
+
+.articulo img {
+	width: 100%;
+	height: auto;
+}
+
+.articulo p {
+	font-size: 14px;
+	color: white;
+	margin:0px;
+	padding: 10px;
+}
+
+.publicidad {
+	overflow: hidden;
+}
+
+.publicidad img {
+	width: 100%;
+	height: auto;
 }
 
 #container {
