@@ -23,9 +23,20 @@ class Comercio(models.Model):
 
 
 class Publicidad(models.Model):
+
+	VERTICAL = 'V'
+	HORIZONTAL = 'H'
+	PRINCIPAL = 'P'
+
+	TIPO_CHOICES = (
+		(VERTICAL, 'Vertical'),
+		(HORIZONTAL, 'Horizontal'),
+		(PRINCIPAL, 'Principal')
+	)
+	
 	nombre = models.CharField(max_length=50, unique=True)
 	url_imagen_publicidad = models.CharField(max_length=500)
-	tipo = models.CharField(max_length=50, choices = (('V', 'Vertical'), ('H', 'Horizontal'), ('P', 'Principal'),))
+	tipo = models.CharField(max_length=50, choices = TIPO_CHOICES, null = false)
 
 	def __unicode__(self):
 		return self.nombre
