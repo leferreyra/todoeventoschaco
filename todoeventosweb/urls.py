@@ -22,3 +22,10 @@ urlpatterns = patterns('',
     url(r'^contacto', 'todoeventos.views.contacto'),
    	
 )
+
+# servir archivos estaticos en servidor de desarrollo
+if settings.DEBUG:
+    urlpatterns += patterns('', 
+        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+          'document_root': settings.MEDIA_ROOT,}),
+        )

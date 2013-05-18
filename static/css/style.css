@@ -32,6 +32,10 @@ nav ul li {
 	margin-right: 20px;
 }
 
+footer {
+	min-height: 200px;
+}
+
 .bloque {
 	background-color: rgba(0, 0, 0, 0.8);
 	width: 100%;
