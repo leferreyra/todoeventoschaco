@@ -17,7 +17,7 @@ def eventos(request):
 
 	servicios = Servicio.objects.all()
 	banners = Banner.objects.all()
-	chicas = get_object_or_404(Galeria, pk=1)
+	chicas = Galeria.objects.filter(pk=1)
 
 	eventos_lista = Evento.objects.all().order_by('id').reverse()
 
@@ -54,7 +54,7 @@ def carteleras(request):
 	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 	servicios= Servicio.objects.all()
 	banners = Banner.objects.all()
-	chicas = get_object_or_404(Evento, pk=1)
+	chicas = Galeria.objects.filter(pk=1)
 
 	
 	delta30d = timedelta(days=30)
@@ -109,7 +109,7 @@ def galerias(request):
 	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 	servicios= Servicio.objects.all()
 	banners = Banner.objects.all()
-	chicas = get_object_or_404(Evento, pk=1)
+	chicas = Galeria.objects.filter(pk=1)
 
 	galeria_lista = Galeria.objects.all().reverse()
 
