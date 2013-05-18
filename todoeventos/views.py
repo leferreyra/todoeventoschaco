@@ -31,7 +31,7 @@ def eventos(request):
 		articulos = paginator.page(paginator.num_pages)
 
 	return render_to_response('lista_articulos.html', {'chicas': chicas, 'articulos': articulos, 'servicios': servicios,
-		'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners}, context_instance=RequestContext(request))
+
 
 def detalle_evento(request, id_evento):
 	#hay que definir la cantidad de publicidades que vamos a mostrar en esta seccion
