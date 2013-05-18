@@ -12,33 +12,35 @@ def eventos(request):
 	#random.shuffle desordena la lista, para obtener siempre publicidades distintas
 	#hay que definir la cantidad de publicidades principales que vamos a mostrar
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
-	p_v = Publicidad.objects.filter(tipo = 'V')[:4]
-	p_h = Publicidad.objects.filter(tipo = 'H')[:2]
+	p_v = random.shuffle(list(Publicidad.objects.filter(tipo = 'V')))
+	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 
 	servicios = Servicio.objects.all()
 	banners = Banner.objects.all()
+	chicas = Galeria.objects.filter(pk=1)
+
 	eventos_lista = Evento.objects.all().order_by('id').reverse()
 
 	paginator = Paginator(eventos_lista, 6)
 	page = request.GET.get('page')
 	try:
-		eventos = paginator.page(page)
+		articulos = paginator.page(page)
 	except PageNotAnInteger:
-		eventos = paginator.page(1)
+		articulos = paginator.page(1)
 	except EmptyPage:
-		eventos = paginator.page(paginator.num_pages)
+		articulos = paginator.page(paginator.num_pages)
 
-	return render_to_response('main.html', {'eventos': eventos, 'servicios': servicios,
-		'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners}, context_instance=RequestContext(request))
+	return render_to_response('lista_articulos.html', {'chicas': chicas, 'articulos': articulos, 'servicios': servicios,
+
 
 def detalle_evento(request, id_evento):
 	#hay que definir la cantidad de publicidades que vamos a mostrar en esta seccion
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
-	p_v = Publicidad.objects.filter(tipo = 'V')[:4]
-	p_h = Publicidad.objects.filter(tipo = 'H')[:2]
+	p_v = random.shuffle(list(Publicidad.objects.filter(tipo = 'V')))
+	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 	servicios= Servicio.objects.all()
 	banners = Banner.objects.all()
-
+	
 	evento = get_object_or_404(Evento, pk= id_evento)
 
 	return render_to_response('detalle_evento.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'evento': evento, 'servicios': servicios}, context_instance= RequestContext(request))
@@ -48,10 +50,12 @@ def carteleras(request):
 	
 	#hay que definir la cantidad de publicidades que vamos a mostrar en esta seccion
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
-	p_v = Publicidad.objects.filter(tipo = 'V')[:4]
-	p_h = Publicidad.objects.filter(tipo = 'H')[:2]
+	p_v = random.shuffle(list(Publicidad.objects.filter(tipo = 'V')))
+	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 	servicios= Servicio.objects.all()
 	banners = Banner.objects.all()
+	chicas = Galeria.objects.filter(pk=1)
+
 	
 	delta30d = timedelta(days=30)
 	
@@ -60,19 +64,19 @@ def carteleras(request):
 	page = request.GET.get('page')
 
 	try:
-		cartelera = paginador.page(page)
+		articulos = paginador.page(page)
 	except PageNotAnInteger:
-		cartelera = paginador.page(1)
+		articulos = paginador.page(1)
 	except EmptyPage:
-		cartelera = paginador.page(paginador.num_pages)
+		articulos = paginador.page(paginador.num_pages)
 
-	return render_to_response('carteleras.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'carteleras': cartelera, 'servicios': servicios}, context_instance=RequestContext(request))
+	return render_to_response('lista_articulos.html', {'chicas': chicas, 'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'articulos': articulos, 'servicios': servicios}, context_instance=RequestContext(request))
 
 def detalle_cartelera(request, id_cartelera):
 	#hay que definir la cantidad de publicidades que vamos a mostrar en esta seccion
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
-	p_v = Publicidad.objects.filter(tipo = 'V')[:4]
-	p_h = Publicidad.objects.filter(tipo = 'H')[:2]
+	p_v = random.shuffle(list(Publicidad.objects.filter(tipo = 'V')))
+	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 	servicios= Servicio.objects.all()
 	banners = Banner.objects.all()
 	cartelera = get_object_or_404(Cartelera, pk= id_cartelera)
@@ -81,18 +85,18 @@ def detalle_cartelera(request, id_cartelera):
 
 def noches(request):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
-	p_v = Publicidad.objects.filter(tipo = 'V')[:4]
-	p_h = Publicidad.objects.filter(tipo = 'H')[:2]
+	p_v = random.shuffle(list(Publicidad.objects.filter(tipo = 'V')))
+	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 	servicios= Servicio.objects.all()
 	banners = Banner.objects.all()
-	noches= Noche.objects.all().reverse()
+	noches= Noche.objects.all()
 
 	return render_to_response('noches.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'noches': noches, 'servicios': servicios}, context_instance=RequestContext(request))
 
 def detalle_noche(request, id_noche):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
-	p_v = Publicidad.objects.filter(tipo = 'V')[:4]
-	p_h = Publicidad.objects.filter(tipo = 'H')[:2]
+	p_v = random.shuffle(list(Publicidad.objects.filter(tipo = 'V')))
+	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 	servicios= Servicio.objects.all()
 	banners = Banner.objects.all()
 	noche = get_object_or_404(Noche, pk= id_noche)
@@ -101,18 +105,30 @@ def detalle_noche(request, id_noche):
 
 def galerias(request):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
-	p_v = Publicidad.objects.filter(tipo = 'V')[:4]
-	p_h = Publicidad.objects.filter(tipo = 'H')[:2]
+	p_v = random.shuffle(list(Publicidad.objects.filter(tipo = 'V')))
+	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 	servicios= Servicio.objects.all()
 	banners = Banner.objects.all()
-	galerias = Galeria.objects.all()
+	chicas = Galeria.objects.filter(pk=1)
 
-	return render_to_response('galerias.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'galeria': galeria, 'servicios': servicios}, context_instance=RequestContext(request))
+	galeria_lista = Galeria.objects.all().reverse()
+
+	paginador = Paginator(galeria_lista, 6)
+	page = request.GET.get('page')
+
+	try:
+		articulos = paginador.page(page)
+	except PageNotAnInteger:
+		articulos = paginador.page(1)
+	except EmptyPage:
+		articulos = paginador.page(paginador.num_pages)
+
+	return render_to_response('lista_articulos.html', {'chicas': chicas, 'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'articulos': articulos, 'servicios': servicios}, context_instance=RequestContext(request))
 
 def detalle_galeria(request, id_galeria):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
-	p_v = Publicidad.objects.filter(tipo = 'V')[:4]
-	p_h = Publicidad.objects.filter(tipo = 'H')[:2]
+	p_v = random.shuffle(list(Publicidad.objects.filter(tipo = 'V')))
+	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 	servicios= Servicio.objects.all()
 	banners = Banner.objects.all()
 	galeria = get_object_or_404(Galeria, pk= id_galeria)
@@ -121,18 +137,17 @@ def detalle_galeria(request, id_galeria):
 
 def comentarios(request):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
-	p_v = Publicidad.objects.filter(tipo = 'V')[:4]
-	p_h = Publicidad.objects.filter(tipo = 'H')[:2]
+	p_v = random.shuffle(list(Publicidad.objects.filter(tipo = 'V')))
+	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 	banners = Banner.objects.all()
 	servicios= Servicio.objects.all()
-	comentarios= Comentario.objects.all()
 
 	return render_to_response('comentarios.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'comentarios': comentarios, 'servicios': servicios}, context_instance=RequestContext(request))
 
 def detalle_servicio(request, id_servicio):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
-	p_v = Publicidad.objects.filter(tipo = 'V')[:4]
-	p_h = Publicidad.objects.filter(tipo = 'H')[:2]
+	p_v = random.shuffle(list(Publicidad.objects.filter(tipo = 'V')))
+	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 	banners = Banner.objects.all()
 	servicios= Servicio.objects.all()
 	comercios= Comercio.objects.filter(tipo_servicio= id_servicio)
@@ -141,8 +156,8 @@ def detalle_servicio(request, id_servicio):
 
 def detalle_comercio(request, id_comercio):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
-	p_v = Publicidad.objects.filter(tipo = 'V')[:4]
-	p_h = Publicidad.objects.filter(tipo = 'H')[:2]
+	p_v = random.shuffle(list(Publicidad.objects.filter(tipo = 'V')))
+	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 	banners = Banner.objects.all()
 	servicios= Servicio.objects.all()
 	comercio= get_object_or_404(Comercio, pk= id_comercio)
