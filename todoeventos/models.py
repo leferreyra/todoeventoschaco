@@ -36,16 +36,7 @@ class Publicidad(models.Model):
 	
 	nombre = models.CharField(max_length=50, unique=True)
 	url_imagen_publicidad = models.CharField(max_length=500)
-	tipo = models.CharField(max_length=50, choices = TIPO_CHOICES, null = false)
-
-	def __unicode__(self):
-		return self.nombre
-
-
-
-class Comentario(models.Model):
-	nombre = models.CharField(max_length=50)
-	comentario = models.TextField(max_length=200)
+	tipo = models.CharField(max_length=50, choices = TIPO_CHOICES, null = False)
 
 	def __unicode__(self):
 		return self.nombre

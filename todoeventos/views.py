@@ -17,18 +17,20 @@ def eventos(request):
 
 	servicios = Servicio.objects.all()
 	banners = Banner.objects.all()
+	chicas = get_object_or_404(Galeria, pk=1)
+
 	eventos_lista = Evento.objects.all().order_by('id').reverse()
 
 	paginator = Paginator(eventos_lista, 6)
 	page = request.GET.get('page')
 	try:
-		eventos = paginator.page(page)
+		articulos = paginator.page(page)
 	except PageNotAnInteger:
-		eventos = paginator.page(1)
+		articulos = paginator.page(1)
 	except EmptyPage:
-		eventos = paginator.page(paginator.num_pages)
+		articulos = paginator.page(paginator.num_pages)
 
-	return render_to_response('eventos.html', {'eventos': eventos, 'servicios': servicios,
+	return render_to_response('lista_articulos.html', {'chicas': chicas, 'articulos': articulos, 'servicios': servicios,
 		'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners}, context_instance=RequestContext(request))
 
 def detalle_evento(request, id_evento):
@@ -38,7 +40,7 @@ def detalle_evento(request, id_evento):
 	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 	servicios= Servicio.objects.all()
 	banners = Banner.objects.all()
-
+	
 	evento = get_object_or_404(Evento, pk= id_evento)
 
 	return render_to_response('detalle_evento.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'evento': evento, 'servicios': servicios}, context_instance= RequestContext(request))
@@ -52,6 +54,8 @@ def carteleras(request):
 	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 	servicios= Servicio.objects.all()
 	banners = Banner.objects.all()
+	chicas = get_object_or_404(Evento, pk=1)
+
 	
 	delta30d = timedelta(days=30)
 	
@@ -60,13 +64,13 @@ def carteleras(request):
 	page = request.GET.get('page')
 
 	try:
-		cartelera = paginador.page(page)
+		articulos = paginador.page(page)
 	except PageNotAnInteger:
-		cartelera = paginador.page(1)
+		articulos = paginador.page(1)
 	except EmptyPage:
-		cartelera = paginador.page(paginador.num_pages)
+		articulos = paginador.page(paginador.num_pages)
 
-	return render_to_response('carteleras.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'carteleras': cartelera, 'servicios': servicios}, context_instance=RequestContext(request))
+	return render_to_response('lista_articulos.html', {'chicas': chicas, 'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'articulos': articulos, 'servicios': servicios}, context_instance=RequestContext(request))
 
 def detalle_cartelera(request, id_cartelera):
 	#hay que definir la cantidad de publicidades que vamos a mostrar en esta seccion
@@ -105,9 +109,21 @@ def galerias(request):
 	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 	servicios= Servicio.objects.all()
 	banners = Banner.objects.all()
-	galerias = Galeria.objects.all()
+	chicas = get_object_or_404(Evento, pk=1)
 
-	return render_to_response('galerias.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'galeria': galeria, 'servicios': servicios}, context_instance=RequestContext(request))
+	galeria_lista = Galeria.objects.all().reverse()
+
+	paginador = Paginator(galeria_lista, 6)
+	page = request.GET.get('page')
+
+	try:
+		articulos = paginador.page(page)
+	except PageNotAnInteger:
+		articulos = paginador.page(1)
+	except EmptyPage:
+		articulos = paginador.page(paginador.num_pages)
+
+	return render_to_response('lista_articulos.html', {'chicas': chicas, 'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'articulos': articulos, 'servicios': servicios}, context_instance=RequestContext(request))
 
 def detalle_galeria(request, id_galeria):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
@@ -125,7 +141,6 @@ def comentarios(request):
 	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 	banners = Banner.objects.all()
 	servicios= Servicio.objects.all()
-	comentarios= Comentario.objects.all()
 
 	return render_to_response('comentarios.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'comentarios': comentarios, 'servicios': servicios}, context_instance=RequestContext(request))
 
