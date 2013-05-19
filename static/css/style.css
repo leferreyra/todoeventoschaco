@@ -67,6 +67,10 @@ footer {
 	width: 440px;
 }
 
+.columna.principal {
+	width: 700px;
+}
+
 .articulo h2 {
 	font-size: 16px;
 	font-weight: normal;
@@ -85,6 +89,18 @@ footer {
 	color: white;
 	margin:0px;
 	padding: 10px;
+}
+
+.articulo a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.detalle-articulo h1 {
+	padding: 10px 20px;
+	color: lightyellow;
+	font-weight: normal;
+	margin: 0px;
 }
 
 .publicidad {

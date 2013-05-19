@@ -26,23 +26,23 @@
 				{% if not forloop.counter|divisibleby:3 %}
 					{% if not forloop.counter|divisibleby:2 %}
 						<div class="articulo bloque">
-							<h2>{{ articulo.nombre }}</h2>
+							<h2><a href="{{ articulo_base_url }}/{{ articulo.id }}">{{ articulo.nombre }}</a></h2>
 							<img data-fbalbum-url='{{ articulo.url_del_album }}'>
 							<p>{{ articulo.descripcion }}</p>
 						</div>
 					{% endif %}
 				{% endif %}
 			{% endfor %}
-			<div class="publicidad bloque">
+			<!-- <div class="publicidad bloque">
 				<img src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash4/378600_126517100827401_642211761_n.jpg" alt="">
-			</div>
+			</div> -->
 		</div>
 		<div class="columna central">
 			{% for articulo in articulos %}
 				{% if not forloop.counter|divisibleby:3 %}
 					{% if forloop.counter|divisibleby:2 %}
 						<div class="articulo bloque">
-							<h2>{{ articulo.nombre }}</h2>
+							<h2><a href="{{ articulo_base_url }}/{{ articulo.id }}">{{ articulo.nombre }}</a></h2>
 							<img data-fbalbum-url='{{ articulo.url_del_album }}'>
 							<p>{{ articulo.descripcion }}</p>
 						</div>
@@ -54,7 +54,7 @@
 			{% for articulo in articulos %}
 				{% if forloop.counter|divisibleby:3 %}
 					<div class="articulo bloque">
-						<h2>{{ articulo.nombre }}</h2>
+						<h2><a href="{{ articulo_base_url }}/{{ articulo.id }}">{{ articulo.nombre }}</a></h2>
 						<img data-fbalbum-url='{{ articulo.url_del_album }}'>
 						<p>{{ articulo.descripcion }}</p>
 					</div>
