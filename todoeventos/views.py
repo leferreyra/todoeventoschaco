@@ -30,7 +30,7 @@ def eventos(request):
 	except EmptyPage:
 		articulos = paginator.page(paginator.num_pages)
 
-	return render_to_response('lista_articulos.html', {'chicas': chicas, 'articulos': articulos, 'servicios': servicios,
+	return render_to_response('lista_articulos.html', {'chicas': chicas, 'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'articulos': articulos, 'servicios': servicios}, context_instance=RequestContext(request))
 
 
 def detalle_evento(request, id_evento):
