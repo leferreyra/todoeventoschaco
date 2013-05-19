@@ -1,8 +1,10 @@
 
-/* Estilos para main.html */
-
-body {
-	margin: 0px;
+html {
+	background-image: url("../img/background.jpg");
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 
 nav {
@@ -39,8 +41,79 @@ footer {
 .bloque {
 	background-color: rgba(0, 0, 0, 0.8);
 	width: 100%;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	border-radius: 3px;
+}
+
+.content-wrapper {
+	overflow: auto;
+}
+
+.contador-musica-social .bloque {
+	height: 40px;
+}
+
+.columna {
+	float: left;
+	margin-right: 10px;
+}
+
+.columna:last-child {
+	margin-right: 0px;
+	float: right;
+}
+
+.columna.izquierda, .columna.derecha {
+	width: 250px;
+}
+
+.columna.central {
+	width: 440px;
+}
+
+.columna.principal {
+	width: 700px;
+}
+
+.articulo h2 {
+	font-size: 16px;
+	font-weight: normal;
+	padding: 10px;
+	color: yellow;
+	margin: 0px;
+}
+
+.articulo img {
+	width: 100%;
+	height: auto;
+}
+
+.articulo p {
+	font-size: 14px;
+	color: white;
+	margin:0px;
+	padding: 10px;
+}
+
+.articulo a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.detalle-articulo h1 {
+	padding: 10px 20px;
+	color: lightyellow;
+	font-weight: normal;
+	margin: 0px;
+}
+
+.publicidad {
+	overflow: hidden;
+}
+
+.publicidad img {
+	width: 100%;
+	height: auto;
 }
 
 #container {
@@ -52,4 +125,12 @@ footer {
 #slider {
 	height: 300px;
 	background: transparent;
+}
+
+#contador-visitas {
+	text-align: center;
+}
+
+#contador-visitas img {
+	margin-top: 5px;
 }

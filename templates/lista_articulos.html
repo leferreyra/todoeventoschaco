@@ -1,0 +1,74 @@
+{% extends "main.html" %}
+
+{% block head_m %}
+	<script>
+		$(document).ready(function(){
+			var images = $(document.images)
+			$.each(images, function(idx, img){
+				if (img.hasAttribute('data-fbalbum-url')){
+					albumid = img.getAttribute('data-fbalbum-url').split('.')[3];
+					$.getJSON("https://graph.facebook.com/" + albumid, function(data){
+						cover = data['cover_photo'];
+						$.getJSON("https://graph.facebook.com/" + cover, function(data){
+							img.src = data['images'][3]['source'];
+						});
+					});
+				}
+			});
+		});
+	</script>
+{% endblock %}
+
+{% block slider %}
+    <div class="slider-wrapper theme-default bloque">
+        <div id='slider' class='nivoSlider'>
+            {% for banner in banners %}
+                <img src="{{ banner.url_imagen_del_banner }}" alt="{{ banner.titulo }}">
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+		<div class="columna izquierda">
+			{% for articulo in articulos %}
+				{% if not forloop.counter|divisibleby:3 %}
+					{% if not forloop.counter|divisibleby:2 %}
+						<div class="articulo bloque">
+							<h2><a href="{{ articulo_base_url }}/{{ articulo.id }}">{{ articulo.nombre }}</a></h2>
+							<img data-fbalbum-url='{{ articulo.url_del_album }}'>
+							<p>{{ articulo.descripcion }}</p>
+						</div>
+					{% endif %}
+				{% endif %}
+			{% endfor %}
+			<!-- <div class="publicidad bloque">
+				<img src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash4/378600_126517100827401_642211761_n.jpg" alt="">
+			</div> -->
+		</div>
+		<div class="columna central">
+			{% for articulo in articulos %}
+				{% if not forloop.counter|divisibleby:3 %}
+					{% if forloop.counter|divisibleby:2 %}
+						<div class="articulo bloque">
+							<h2><a href="{{ articulo_base_url }}/{{ articulo.id }}">{{ articulo.nombre }}</a></h2>
+							<img data-fbalbum-url='{{ articulo.url_del_album }}'>
+							<p>{{ articulo.descripcion }}</p>
+						</div>
+					{% endif %}
+				{% endif %}
+			{% endfor %}
+		</div>
+		<div class="columna derecha">
+			{% for articulo in articulos %}
+				{% if forloop.counter|divisibleby:3 %}
+					<div class="articulo bloque">
+						<h2><a href="{{ articulo_base_url }}/{{ articulo.id }}">{{ articulo.nombre }}</a></h2>
+						<img data-fbalbum-url='{{ articulo.url_del_album }}'>
+						<p>{{ articulo.descripcion }}</p>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+{% endblock %}
