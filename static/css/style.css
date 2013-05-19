@@ -41,12 +41,16 @@ footer {
 .bloque {
 	background-color: rgba(0, 0, 0, 0.8);
 	width: 100%;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	border-radius: 3px;
 }
 
 .content-wrapper {
 	overflow: auto;
+}
+
+.contador-musica-social .bloque {
+	height: 40px;
 }
 
 .columna {
@@ -121,4 +125,12 @@ footer {
 #slider {
 	height: 300px;
 	background: transparent;
+}
+
+#contador-visitas {
+	text-align: center;
+}
+
+#contador-visitas img {
+	margin-top: 5px;
 }

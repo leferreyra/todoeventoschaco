@@ -1,7 +1,5 @@
 {% extends "main.html" %}
 
-{# lista #}
-
 {% block head_m %}
 	<script>
 		$(document).ready(function(){
@@ -21,8 +19,18 @@
 	</script>
 {% endblock %}
 
+{% block slider %}
+    <div class="slider-wrapper theme-default bloque">
+        <div id='slider' class='nivoSlider'>
+            {% for banner in banners %}
+                <img src="{{ banner.url_imagen_del_banner }}" alt="{{ banner.titulo }}">
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
 {% block content %}
-	<div class="content-wrapper">
+
 		<div class="columna izquierda">
 			{% for articulo in articulos %}
 				{% if not forloop.counter|divisibleby:3 %}
@@ -63,5 +71,4 @@
 				{% endif %}
 			{% endfor %}
 		</div>
-	</div>
 {% endblock %}

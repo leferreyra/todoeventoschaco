@@ -56,17 +56,34 @@
             {% endblock %}
         </nav>
 
-        <div class="slider-wrapper theme-default bloque">
-            <div id='slider' class='nivoSlider'>
-                {% for banner in banners %}
-                    <img src="{{ banner.url_imagen_del_banner }}" alt="{{ banner.titulo }}">
-                {% endfor %}
-            </div>
-        </div>
-
-        {% block content %}
-            {# Contenido de la pagina #}
+        {% block slider %}
+            {# Slider #}
         {% endblock %}
+
+        <div class="content-wrapper">
+
+            <div class="publicidad-logos"> </div>
+
+            <div class="contador-musica-social">
+                <div class="columna izquierda">
+                    <div class="bloque" id='contador-visitas'>
+                        <!-- inicio codigo contador -->
+                        <img style="border: 0px solid ; display: inline;" alt="contador de visitas" 
+                        src="http://contador-de-visitas.com/hit.php?id=1733211&counter=37">
+                        <!-- fin codigo contador -->
+                    </div>
+                </div>
+                <div class="columna central">
+                    <div class="bloque">xD</div>
+                </div>
+                <div class="columna derecha">
+                    <div class="bloque">xD</div>
+                </div>
+            </div>
+            {% block content %}
+                {# Contenido de la pagina #}
+            {% endblock %}
+        </div>
 
         <footer class='bloque'>
             {# Contenido del footer #}
