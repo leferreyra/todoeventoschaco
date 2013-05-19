@@ -58,7 +58,7 @@ class Evento(models.Model):
 	fecha = models.DateField()
 	descripcion = models.TextField()
 	url_del_album = models.CharField(max_length=500)
-	url_del_video = models.CharField(max_length=500)
+	url_del_video = models.CharField(max_length=500, blank=True, null=True)
 	video_como_portada = models.BooleanField()
 
 
@@ -73,6 +73,8 @@ class Noche(models.Model):
 	def __unicode__(self):
 		return self.nombre
 
+	def descripcion(self):
+		return self.fecha
 
 class Galeria(models.Model):
 	nombre = models.CharField(max_length=100)
@@ -88,5 +90,7 @@ class Banner(models.Model):
 	descripcion = models.TextField(max_length=140)
 	url_imagen_del_banner = models.CharField(max_length=500)
 
+	def __unicode__(self):
+		return self.nombre
 
 
