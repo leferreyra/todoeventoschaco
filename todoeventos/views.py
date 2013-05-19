@@ -30,7 +30,10 @@ def eventos(request):
 	except EmptyPage:
 		articulos = paginator.page(paginator.num_pages)
 
-	return render_to_response('lista_articulos.html', {'chicas': chicas, 'articulos': articulos, 'servicios': servicios,
+	return render_to_response('lista_articulos.html', 
+		{'chicas': chicas, 'articulos': articulos, 'articulo_base_url': 'evento',
+		'banners':banners, 'servicios': servicios}, 
+		context_instance=RequestContext(request))
 
 
 def detalle_evento(request, id_evento):
@@ -43,7 +46,7 @@ def detalle_evento(request, id_evento):
 	
 	evento = get_object_or_404(Evento, pk= id_evento)
 
-	return render_to_response('detalle_evento.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'evento': evento, 'servicios': servicios}, context_instance= RequestContext(request))
+	return render_to_response('detalle_articulo.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'articulo': evento, 'servicios': servicios}, context_instance= RequestContext(request))
 
 
 def carteleras(request):

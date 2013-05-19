@@ -8,8 +8,8 @@ urlpatterns = patterns('',
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
-
     url(r'^$', "todoeventos.views.eventos"),
+    url(r'^evento/(?P<id_evento>\d+)$', 'todoeventos.views.detalle_evento'),
    	url(r'^cartelera/(?P<id_cartelera>\d+)$', 'todoeventos.views.detalle_cartelera'),
    	url(r'^carteleras/' , 'todoeventos.views.carteleras'),
    	url(r'^noches/(?P<id_noche>\d+)$', 'todoeventos.views.detalle_noche'),
