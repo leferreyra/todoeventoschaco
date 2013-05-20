@@ -11,7 +11,7 @@ import random
 def eventos(request):
 	#random.shuffle desordena la lista, para obtener siempre publicidades distintas
 	#hay que definir la cantidad de publicidades principales que vamos a mostrar
-	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
+	p_p = Publicidad.objects.filter(tipo = 'P')[:7]
 	p_v = random.shuffle(list(Publicidad.objects.filter(tipo = 'V')))
 	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 
@@ -29,6 +29,7 @@ def eventos(request):
 		articulos = paginator.page(1)
 	except EmptyPage:
 		articulos = paginator.page(paginator.num_pages)
+
 
 	return render_to_response('lista_articulos.html', 
 		{
@@ -84,6 +85,7 @@ def carteleras(request):
 
 	return render_to_response('lista_articulos.html', 
 		{
+			'chicas': chicas,
 			'articulos': articulos, 
 			'articulo_base_url': 'cartelera',
 			'menu_activo': 'cartelera',
@@ -112,7 +114,7 @@ def noches(request):
 	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 	servicios= Servicio.objects.all()
 	banners = Banner.objects.all()
-	noches= Noche.objects.all()
+	noches= Noche.objects.all().order_by('id').reverse()
 
 	return render_to_response('noches.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'noches': noches, 'servicios': servicios}, context_instance=RequestContext(request))
 
@@ -134,7 +136,7 @@ def galerias(request):
 	banners = Banner.objects.all()
 	chicas = Galeria.objects.filter(pk=1)
 
-	galeria_lista = Galeria.objects.all().reverse()
+	galeria_lista = Galeria.objects.all().order_by('id').reverse()
 
 	paginador = Paginator(galeria_lista, 6)
 	page = request.GET.get('page')
@@ -148,6 +150,7 @@ def galerias(request):
 
 	return render_to_response('lista_articulos.html', 
 		{
+			'chicas': chicas,
 			'articulos': articulos, 
 			'articulo_base_url': 'galeria',
 			'menu_activo': 'galeria',
@@ -179,7 +182,7 @@ def comentarios(request):
 	return render_to_response('comentarios.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'comentarios': comentarios, 'servicios': servicios}, context_instance=RequestContext(request))
 
 def detalle_servicio(request, id_servicio):
-	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
+	p_p = Publicidad.objects.filter(tipo = 'P')[:7]
 	p_v = random.shuffle(list(Publicidad.objects.filter(tipo = 'V')))
 	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 	banners = Banner.objects.all()
@@ -189,7 +192,7 @@ def detalle_servicio(request, id_servicio):
 	return render_to_response('detalle_servicio.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'comercios': comercios, 'servicios': servicios}, context_instance=RequestContext(request))
 
 def detalle_comercio(request, id_comercio):
-	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
+	p_p = Publicidad.objects.filter(tipo = 'P')[:7]
 	p_v = random.shuffle(list(Publicidad.objects.filter(tipo = 'V')))
 	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 	banners = Banner.objects.all()
