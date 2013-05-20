@@ -116,6 +116,13 @@ footer {
 	height: auto;
 }
 
+.comentarios{
+	background-color: rgba(0, 0, 0, 0.8);
+	width: 700px;
+	float: left;
+	margin-bottom: 10px;
+}
+
 #container {
 	width: 960px;
 	margin: 20px auto 0px;
@@ -133,4 +140,25 @@ footer {
 
 #contador-visitas img {
 	margin-top: 5px;
+}
+
+#telefonoPublicidad{
+	text-align: justify;
+	word-spacing: 8px;
+	font-size: 27px;
+	color: white;
+	margin: 10px;
+}
+
+#comentario{
+	font-size: 23px;
+	color: white;
+	margin: 10px;
+}
+
+#lineaSeparador{
+	width: 500px;
+	border-bottom: solid 5px #383636;
+	margin: 0 auto;
+	border-radius:7px;
 }
