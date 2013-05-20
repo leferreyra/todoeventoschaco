@@ -62,12 +62,16 @@
 
         <div class="content-wrapper">
 
-            <div class="publicidades-logos"></div>
+            <div class="publicidades-logos bloque">
+                {% for publicidad in p_p %}
+                    <img src='{{ publicidad.url_imagen_publicidad }}'>
+                {% endfor %}
+            </div>
 
             <div class="contador-musica-social">
                 <div class="columna izquierda">
                     <div class="bloque" id='contador-visitas'>
-
+                        
                     </div>
                 </div>
                 <div class="columna central">

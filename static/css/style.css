@@ -1,6 +1,6 @@
 
 html {
-	background-image: url("../img/background.png");
+	background-image: url("../img/background.jpg");
 	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -49,6 +49,17 @@ footer {
 	overflow: auto;
 }
 
+.publicidades-logos {
+	height: 50px;
+	background: black;
+}
+
+.publicidades-logos img {
+	float: left;
+	height: 100%;
+	width: auto;
+}
+
 .contador-musica-social .bloque {
 	height: 40px;
 }
@@ -79,7 +90,7 @@ footer {
 	font-size: 16px;
 	font-weight: normal;
 	padding: 10px;
-	color: yellow;
+	color: #09f;
 	margin: 0px;
 }
 
