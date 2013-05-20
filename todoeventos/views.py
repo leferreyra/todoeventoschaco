@@ -75,7 +75,7 @@ def carteleras(request):
 	except EmptyPage:
 		articulos = paginador.page(paginador.num_pages)
 
-	return render_to_response('lista_articulos.html', {'chicas': chicas, 'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'articulos': articulos, 'servicios': servicios, 'articulo_base_url': 'evento'}, context_instance=RequestContext(request))
+	return render_to_response('lista_articulos.html', {'chicas': chicas, 'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'articulos': articulos, 'servicios': servicios, 'articulo_base_url': 'cartelera'}, context_instance=RequestContext(request))
 
 def detalle_cartelera(request, id_cartelera):
 	#hay que definir la cantidad de publicidades que vamos a mostrar en esta seccion
@@ -128,7 +128,7 @@ def galerias(request):
 	except EmptyPage:
 		articulos = paginador.page(paginador.num_pages)
 
-	return render_to_response('lista_articulos.html', {'chicas': chicas, 'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'articulos': articulos, 'servicios': servicios, 'articulo_base_url': 'evento'}, context_instance=RequestContext(request))
+	return render_to_response('lista_articulos.html', {'chicas': chicas, 'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'articulos': articulos, 'servicios': servicios, 'articulo_base_url': 'galeria'}, context_instance=RequestContext(request))
 
 def detalle_galeria(request, id_galeria):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
