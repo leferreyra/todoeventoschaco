@@ -17,7 +17,7 @@
                 boxCols: 8, // For box animations
                 boxRows: 4, // For box animations
                 animSpeed: 500, // Slide transition speed
-                pauseTime: 3000, // How long each slide will show
+                pauseTime: 5000, // How long each slide will show
                 startSlide: 0, // Set starting Slide (0 index)
                 directionNav: true, // Next & Prev navigation
                 controlNav: false, // 1,2,3... navigation
@@ -45,13 +45,24 @@
         <nav class='bloque'>
             {% block nav %}
                 <ul>
-                    <li><a href='/'>Eventos</a></li>
-                    <li><a href='/carteleras/'>Cartelera</a></li>
-                    <li><a href='/galerias/'>Galeria</a></li>
-                    <li><a href='/servicios/'>Servicios</a></li>
-                    <li><a href='/noches/'>Noche</a></li>
-                    <li><a href='/chicas/'>Chicas</a></li>
-                    <li><a href='/comentarios/'>Comentarios</a></li>
+                    <li>
+                        <a class='{% if menu_activo == "eventos" %}active{% endif %}' href='/'>Eventos</a>
+                    </li>
+                    <li>
+                        <a class='{% if menu_activo == "cartelera" %}active{% endif %}' href='/carteleras/'>Cartelera</a>
+                    </li>
+                    <li>
+                        <a class='{% if menu_activo == "galeria" %}active{% endif %}' href='/galerias/'>Galeria</a>
+                    </li>
+                    <li>
+                        <a class='{% if menu_activo == "servicios" %}active{% endif %}' href='/servicios/'>Servicios</a>
+                    </li>
+                    <li>
+                        <a class='{% if menu_activo == "noche" %}active{% endif %}' href='/noches/'>Noche</a>
+                    </li>
+                    <li>
+                        <a class='{% if menu_activo == "comentarios" %}active{% endif %}' href='/comentarios/'>Comentarios</a>
+                    </li>
                 </ul>
             {% endblock %}
         </nav>

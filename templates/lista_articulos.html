@@ -17,15 +17,36 @@
 			});
 		});
 	</script>
+	<style>
+		.nivo-caption h2 {
+			margin: 0px;
+			padding: 10px;
+			padding-bottom: 0px;
+			font-weight: bold;
+			font-size: 20px;
+		}
+		.nivo-caption p {
+			padding: 10px;
+			padding-top: 0px;
+			margin: 0px;
+		}
+	</style>
 {% endblock %}
 
 {% block slider %}
     <div class="slider-wrapper theme-default bloque">
         <div id='slider' class='nivoSlider'>
             {% for banner in banners %}
-                <img src="{{ banner.url_imagen_del_banner }}" alt="{{ banner.titulo }}">
+                <img src="{{ banner.url_imagen_del_banner }}" alt="{{ banner.titulo }}" 
+                	title="#slider-caption-{{ banner.id }}">
             {% endfor %}
         </div>
+        {% for banner in banners %}
+	        <div id="slider-caption-{{ banner.id }}" class="nivo-html-caption nivo-caption">
+	        	<h2>{{ banner.titulo }}</h2>
+	        	<p>{{ banner.descripcion }}</p>
+			</div>
+        {% endfor %}
     </div>
 {% endblock %}
 
@@ -33,14 +54,16 @@
 
 		<div class="columna izquierda">
 			{% for articulo in articulos %}
-				{% if not forloop.counter|divisibleby:3 %}
-					{% if not forloop.counter|divisibleby:2 %}
-						<div class="articulo bloque">
-							<h2><a href="{{ articulo_base_url }}/{{ articulo.id }}">{{ articulo.nombre }}</a></h2>
-							<img data-fbalbum-url='{{ articulo.url_del_album }}'>
-							<p>{{ articulo.descripcion }}</p>
-						</div>
-					{% endif %}
+				{% if forloop.counter > 2 and forloop.counter < 5 %}
+					<div class="articulo bloque">
+						<h2><a href="/{{ articulo_base_url }}/{{ articulo.id }}">{{ articulo.nombre }}</a></h2>
+						<img data-fbalbum-url='{{ articulo.url_del_album }}'>
+						<p>
+							{{ articulo.descripcion|truncatewords:20 }}
+							<a class='readon' href="/{{ articulo_base_url }}/{{ articulo.id }}">Ver Mas</a>
+						</p>
+						
+					</div>
 				{% endif %}
 			{% endfor %}
 			<!-- <div class="publicidad bloque">
@@ -49,24 +72,28 @@
 		</div>
 		<div class="columna central">
 			{% for articulo in articulos %}
-				{% if not forloop.counter|divisibleby:3 %}
-					{% if forloop.counter|divisibleby:2 %}
-						<div class="articulo bloque">
-							<h2><a href="{{ articulo_base_url }}/{{ articulo.id }}">{{ articulo.nombre }}</a></h2>
-							<img data-fbalbum-url='{{ articulo.url_del_album }}'>
-							<p>{{ articulo.descripcion }}</p>
-						</div>
-					{% endif %}
+				{% if forloop.counter < 3 %}
+					<div class="articulo bloque">
+						<h2><a href="{{ articulo_base_url }}/{{ articulo.id }}">{{ articulo.nombre }}</a></h2>
+						<img data-fbalbum-url='{{ articulo.url_del_album }}'>
+						<p>
+							{{ articulo.descripcion|truncatewords:40 }}
+							<a class='readon' href="/{{ articulo_base_url }}/{{ articulo.id }}">Ver Mas</a>
+						</p>
+					</div>
 				{% endif %}
 			{% endfor %}
 		</div>
 		<div class="columna derecha">
 			{% for articulo in articulos %}
-				{% if forloop.counter|divisibleby:3 %}
+				{% if forloop.counter > 4 %}
 					<div class="articulo bloque">
 						<h2><a href="{{ articulo_base_url }}/{{ articulo.id }}">{{ articulo.nombre }}</a></h2>
 						<img data-fbalbum-url='{{ articulo.url_del_album }}'>
-						<p>{{ articulo.descripcion }}</p>
+						<p>
+							{{ articulo.descripcion|truncatewords:20 }}
+							<a class='readon' href="/{{ articulo_base_url }}/{{ articulo.id }}">Ver Mas</a>
+						</p>
 					</div>
 				{% endif %}
 			{% endfor %}

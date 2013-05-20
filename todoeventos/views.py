@@ -31,9 +31,17 @@ def eventos(request):
 		articulos = paginator.page(paginator.num_pages)
 
 	return render_to_response('lista_articulos.html', 
-		{'chicas': chicas, 'articulos': articulos, 'articulo_base_url': 'evento',
-		'banners':banners, 'servicios': servicios, 
-		'p_p': p_p, 'p_v': p_v, 'p_h': p_h},
+		{
+			'chicas': chicas, 
+			'articulos': articulos, 
+			'articulo_base_url': 'evento',
+			'menu_activo': 'eventos',
+			'banners':banners, 
+			'servicios': servicios, 
+			'p_p': p_p, 
+			'p_v': p_v, 
+			'p_h': p_h
+		}, 
 		context_instance=RequestContext(request))
 
 
@@ -74,7 +82,18 @@ def carteleras(request):
 	except EmptyPage:
 		articulos = paginador.page(paginador.num_pages)
 
-	return render_to_response('lista_articulos.html', {'chicas': chicas, 'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'articulos': articulos, 'servicios': servicios}, context_instance=RequestContext(request))
+	return render_to_response('lista_articulos.html', 
+		{
+			'articulos': articulos, 
+			'articulo_base_url': 'cartelera',
+			'menu_activo': 'cartelera',
+			'banners':banners, 
+			'servicios': servicios, 
+			'p_p': p_p, 
+			'p_v': p_v, 
+			'p_h': p_h
+		}, 
+		context_instance=RequestContext(request))
 
 def detalle_cartelera(request, id_cartelera):
 	#hay que definir la cantidad de publicidades que vamos a mostrar en esta seccion
@@ -127,7 +146,18 @@ def galerias(request):
 	except EmptyPage:
 		articulos = paginador.page(paginador.num_pages)
 
-	return render_to_response('lista_articulos.html', {'chicas': chicas, 'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'articulos': articulos, 'servicios': servicios}, context_instance=RequestContext(request))
+	return render_to_response('lista_articulos.html', 
+		{
+			'articulos': articulos, 
+			'articulo_base_url': 'galeria',
+			'menu_activo': 'galeria',
+			'banners':banners, 
+			'servicios': servicios, 
+			'p_p': p_p, 
+			'p_v': p_v, 
+			'p_h': p_h
+		}, 
+		context_instance=RequestContext(request))
 
 def detalle_galeria(request, id_galeria):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
