@@ -33,7 +33,8 @@ def eventos(request):
 
 	return render_to_response('lista_articulos.html', 
 		{'chicas': chicas, 'articulos': articulos, 'articulo_base_url': 'evento',
-		'banners':banners, 'servicios': servicios}, 
+		'banners':banners, 'servicios': servicios, 
+		'p_p': p_p, 'p_v': p_v, 'p_h': p_h},
 		context_instance=RequestContext(request))
 
 

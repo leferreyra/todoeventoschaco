@@ -62,19 +62,22 @@
 
         <div class="content-wrapper">
 
-            <div class="publicidad-logos"> </div>
+            <div class="publicidades-logos bloque">
+                {% for publicidad in p_p %}
+                    <img src='{{ publicidad.url_imagen_publicidad }}'>
+                {% endfor %}
+            </div>
 
             <div class="contador-musica-social">
                 <div class="columna izquierda">
                     <div class="bloque" id='contador-visitas'>
-                        <!-- inicio codigo contador -->
-                        <img style="border: 0px solid ; display: inline;" alt="contador de visitas" 
-                        src="http://contador-de-visitas.com/hit.php?id=1733211&counter=37">
-                        <!-- fin codigo contador -->
+                        
                     </div>
                 </div>
                 <div class="columna central">
-                    <div class="bloque">xD</div>
+                    <div class="bloque">
+
+                    </div>
                 </div>
                 <div class="columna derecha">
                     <div class="bloque">xD</div>
