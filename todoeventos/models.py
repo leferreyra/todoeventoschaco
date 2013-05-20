@@ -91,6 +91,4 @@ class Banner(models.Model):
 	url_imagen_del_banner = models.CharField(max_length=500)
 
 	def __unicode__(self):
-		return self.nombre
-
-
+		return self.titulo
