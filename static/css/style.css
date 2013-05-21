@@ -151,6 +151,58 @@ footer {
 	margin-bottom: 10px;
 }
 
+.servicio{
+	background-color: rgba(0, 0, 0, 0.8);
+	border-radius: 4px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 700px;
+	float: left;
+}
+
+.contenedorImagenServicio{
+	width: 200px;
+	height: 180px;
+	margin: 10px;
+	border-radius: 12px;
+	float: left;
+
+}
+
+.imagenServicio{
+	width: 100%;
+	height: auto;
+	border-radius: 12px;
+}
+
+.textoServicio{
+	margin: 10px;
+}
+
+.tituloServicio{
+	color: #09F;
+	font-size: 20px;
+	font-weight: normal;
+	text-decoration: none;
+	cursor: auto;
+}
+
+.descripcionServicio{
+	font-size: 14px;
+	font-weight: normal;
+	color: white;
+	height: 108px;
+}
+
+.masInfoServicio{
+	font-size: 14px;
+	font-weight: normal;
+	color: white;
+	font-weight: normal;
+	text-decoration: none;
+	float: right;
+}
+
 #container {
 	width: 960px;
 	margin: 20px auto 0px;
