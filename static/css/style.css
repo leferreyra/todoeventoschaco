@@ -20,7 +20,12 @@ nav a {
 }
 
 nav a:hover {
-	color: white;
+	color: #09f;
+}
+
+nav a.active {
+	color: #09f;
+	text-shadow: 0px 0px 15px #09f;
 }
 
 nav ul {
@@ -47,6 +52,19 @@ footer {
 
 .content-wrapper {
 	overflow: auto;
+}
+
+.publicidades-logos {
+	height: 50px;
+	width: 910px;
+	padding: 0px 25px;
+	background: black;
+}
+
+.publicidades-logos img {
+	float: left;
+	height: 100%;
+	width: auto;
 }
 
 .contador-musica-social .bloque {
@@ -79,7 +97,7 @@ footer {
 	font-size: 16px;
 	font-weight: normal;
 	padding: 10px;
-	color: yellow;
+	color: #09f;
 	margin: 0px;
 }
 
@@ -98,6 +116,16 @@ footer {
 .articulo a {
 	text-decoration: none;
 	color: inherit;
+}
+
+.articulo a.readon {
+	font-size: 12px;
+	color: #09f;
+	margin: 10px;
+}
+
+.articulo a.readon:hover {
+	text-decoration: underline;
 }
 
 .detalle-articulo h1 {
@@ -135,7 +163,15 @@ footer {
 }
 
 #contador-visitas {
+	font-weight: bold;
+	font-size: 20px;
 	text-align: center;
+	line-height: 40px;
+}
+
+#contador-visitas a {
+	color: white;
+	text-decoration: none;
 }
 
 #contador-visitas img {
