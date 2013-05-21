@@ -55,14 +55,28 @@ def eventos(request):
 def detalle_evento(request, id_evento):
 	#hay que definir la cantidad de publicidades que vamos a mostrar en esta seccion
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
-	p_v = random.shuffle(list(Publicidad.objects.filter(tipo = 'V')))
-	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
+
+	p_v = list(Publicidad.objects.filter(tipo = 'V'))
+	random.shuffle(p_v)
+
+	p_h = list(Publicidad.objects.filter(tipo = 'H'))	
+	random.shuffle(p_h)
+
 	servicios= Servicio.objects.all()
 	banners = Banner.objects.all()
 	
-	evento = get_object_or_404(Evento, pk= id_evento)
+	evento = get_object_or_404(Evento, pk=id_evento)
 
-	return render_to_response('detalle_articulo.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'articulo': evento, 'servicios': servicios}, context_instance= RequestContext(request))
+	return render_to_response('detalle_articulo.html', 
+		{
+			'articulo': evento, 
+			'menu_activo': 'eventos',
+			'servicios': servicios, 
+			'p_p': p_p, 
+			'p_v': p_v, 
+			'p_h': p_h
+		}, 
+		context_instance=RequestContext(request))
 
 
 def carteleras(request):

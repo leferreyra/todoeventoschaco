@@ -1,5 +1,9 @@
 {% extends "main.html" %}
 
+{% block title %}
+    {{ menu_activo|capfirst }} | Todo Eventos Chaco
+{% endblock %}
+
 {% block head_m %}
 	<script>
 		$(document).ready(function(){
