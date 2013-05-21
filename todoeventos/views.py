@@ -12,12 +12,18 @@ def eventos(request):
 	#random.shuffle desordena la lista, para obtener siempre publicidades distintas
 	#hay que definir la cantidad de publicidades principales que vamos a mostrar
 	p_p = Publicidad.objects.filter(tipo = 'P')[:7]
-	p_v = random.shuffle(list(Publicidad.objects.filter(tipo = 'V')))
-	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
+
+	# random.shuffle() no devuelve nada, solo mezcla la lista
+
+	p_v = list(Publicidad.objects.filter(tipo = 'V'))
+	random.shuffle(p_v)
+
+	p_h = list(Publicidad.objects.filter(tipo = 'H'))	
+	random.shuffle(p_h)
 
 	servicios = Servicio.objects.all()
 	banners = Banner.objects.all()
-	chicas = Galeria.objects.filter(pk=1)
+	chicas = Galeria.objects.get(pk=1)
 
 	eventos_lista = Evento.objects.all().order_by('id').reverse()
 
@@ -61,13 +67,17 @@ def detalle_evento(request, id_evento):
 
 def carteleras(request):
 	
-	#hay que definir la cantidad de publicidades que vamos a mostrar en esta seccion
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
-	p_v = random.shuffle(list(Publicidad.objects.filter(tipo = 'V')))
-	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
+
+	p_v = list(Publicidad.objects.filter(tipo = 'V'))
+	random.shuffle(p_v)
+
+	p_h = list(Publicidad.objects.filter(tipo = 'H'))	
+	random.shuffle(p_h)
+
 	servicios= Servicio.objects.all()
 	banners = Banner.objects.all()
-	chicas = Galeria.objects.filter(pk=1)
+	chicas = Galeria.objects.get(pk=1)
 
 	
 	delta30d = timedelta(days=30)
@@ -129,12 +139,18 @@ def detalle_noche(request, id_noche):
 	return render_to_response('detalle_noche.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'noche': noche, 'servicios': servicios}, context_instance= RequestContext(request))
 
 def galerias(request):
+
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
-	p_v = random.shuffle(list(Publicidad.objects.filter(tipo = 'V')))
-	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
+	
+	p_v = list(Publicidad.objects.filter(tipo = 'V'))
+	random.shuffle(p_v)
+
+	p_h = list(Publicidad.objects.filter(tipo = 'H'))	
+	random.shuffle(p_h)
+
 	servicios= Servicio.objects.all()
 	banners = Banner.objects.all()
-	chicas = Galeria.objects.filter(pk=1)
+	chicas = Galeria.objects.get(pk=1)
 
 	galeria_lista = Galeria.objects.all().order_by('id').reverse()
 

@@ -156,7 +156,15 @@ footer {
 }
 
 #contador-visitas {
+	font-weight: bold;
+	font-size: 20px;
 	text-align: center;
+	line-height: 40px;
+}
+
+#contador-visitas a {
+	color: white;
+	text-decoration: none;
 }
 
 #contador-visitas img {
