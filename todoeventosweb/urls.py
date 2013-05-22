@@ -21,7 +21,6 @@ urlpatterns = patterns('',
 
     url(r'^comercio/(?P<id_comercio>\d+)$' , 'todoeventos.views.detalle_comercio'),
     url(r'^servicio/(?P<id_servicio>\d+)$' , 'todoeventos.views.detalle_servicio'),    
-    url(r'contacto', 'todoeventos.views.contacto'),
 
 )
 
