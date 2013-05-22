@@ -225,7 +225,6 @@ footer {
 .servicio{
 	background-color: rgba(0, 0, 0, 0.8);
 	border-radius: 4px;
-	margin-top: 10px;
 	margin-bottom: 10px;
 	width: 700px;
 	float: left;
@@ -233,21 +232,23 @@ footer {
 
 .contenedorImagenServicio{
 	width: 200px;
-	height: 180px;
 	margin: 10px;
 	border-radius: 12px;
 	float: left;
-
+	overflow: auto;
 }
 
 .imagenServicio{
 	width: 100%;
 	height: auto;
 	border-radius: 12px;
+	float: left;
 }
 
 .textoServicio{
 	margin: 10px;
+	width: 460px;
+	float: right;
 }
 
 .tituloServicio{
@@ -262,16 +263,18 @@ footer {
 	font-size: 14px;
 	font-weight: normal;
 	color: white;
-	height: 108px;
 }
 
 .masInfoServicio{
 	font-size: 14px;
 	font-weight: normal;
-	color: white;
+	color: #09f;
 	font-weight: normal;
 	text-decoration: none;
-	float: right;
+}
+
+.masInfoServicio:hover {
+	text-decoration: underline;
 }
 
 #galeria {
