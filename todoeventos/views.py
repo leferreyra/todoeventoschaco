@@ -262,4 +262,4 @@ def detalle_comercio(request, id_comercio):
 	servicios= Servicio.objects.all()
 	comercio= get_object_or_404(Comercio, pk= id_comercio)
 	
-	return render_to_response('detalle_comercio.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'comercio': comercio, 'servicios': servicios, 'menu_activo': 'servicios'}, context_instance= RequestContext(request))
+	return render_to_response('detalle_articulo.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'articulo': comercio, 'servicios': servicios, 'menu_activo': 'servicios'}, context_instance= RequestContext(request))

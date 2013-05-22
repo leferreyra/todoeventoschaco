@@ -43,7 +43,7 @@
 
 				$(ytdiv).append(video_frame);
 			});
-			k
+
 		});
 	</script>
 	<style>
@@ -86,9 +86,15 @@
 				{% if forloop.counter > 2 and forloop.counter < 5 %}
 					<div class="articulo bloque">
 						<h2><a href="/{{ articulo_base_url }}/{{ articulo.id }}">{{ articulo.nombre }}</a></h2>
-						<a href="/{{ articulo_base_url }}/{{ articulo.id }}">
-							<img data-fbalbum-url='{{ articulo.url_del_album }}'>
-						</a>
+
+						{% if articulo.url_del_video and articulo.video_como_portada %}
+							<div class='yt-video' data-youtube-video='{{ articulo.url_del_video }}'></div>
+						{% else %}
+							<a href="/{{ articulo_base_url }}/{{ articulo.id }}">
+								<img class='portada' data-fbalbum-url="{{ articulo.url_del_album }}">
+							</a>
+						{% endif %}
+
 						<p>
 							{{ articulo.descripcion|truncatewords:20 }}
 							<a class='readon' href="/{{ articulo_base_url }}/{{ articulo.id }}">Ver Mas</a>
@@ -162,9 +168,15 @@
 				{% if forloop.counter > 4 %}
 					<div class="articulo bloque">
 						<h2><a href="/{{ articulo_base_url }}/{{ articulo.id }}">{{ articulo.nombre }}</a></h2>
-						<a href="/{{ articulo_base_url }}/{{ articulo.id }}">
-							<img data-fbalbum-url='{{ articulo.url_del_album }}'>
-						</a>
+
+						{% if articulo.url_del_video and articulo.video_como_portada %}
+							<div class='yt-video' data-youtube-video='{{ articulo.url_del_video }}'></div>
+						{% else %}
+							<a href="/{{ articulo_base_url }}/{{ articulo.id }}">
+								<img class='portada' data-fbalbum-url="{{ articulo.url_del_album }}">
+							</a>
+						{% endif %}
+
 						<p>
 							{{ articulo.descripcion|truncatewords:20 }}
 							<a class='readon' href="/{{ articulo_base_url }}/{{ articulo.id }}">Ver Mas</a>
