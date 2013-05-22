@@ -55,7 +55,7 @@
                         <a class='{% if menu_activo == "galeria" %}active{% endif %}' href='/galerias/'>Galeria</a>
                     </li>
                     <li>
-                        <a href='#'>Servicios</a>
+                        <a class='{% if menu_activo == "servicios" %}active{% endif %}' href='#'>Servicios</a>
                         <ul>
                             {% for servicio in servicios %}
                                 <a href='/servicio/{{ servicio.id }}'><li>{{ servicio.nombre }}</li></a>
