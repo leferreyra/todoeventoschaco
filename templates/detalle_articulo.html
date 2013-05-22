@@ -11,23 +11,7 @@
 
 		$(document).ready(function(){
 
-			// Cargar la portada del album (si es una foto)
-
 			var albumid = "{{ articulo.url_del_album }}".split('.')[3];
-
-			var images = $(document.images)
-			$.each(images, function(idx, img){
-				if (img.hasAttribute('data-fbalbum-url')){
-					
-					$.getJSON("https://graph.facebook.com/" + albumid, function(data){
-						cover = data['cover_photo'];
-						$.getJSON("https://graph.facebook.com/" + cover, function(data){
-							img.src = data['images'][3]['source'];
-						});
-					});
-				}
-			});
-
 
 			// Cargar fotos del album
 			$.getJSON("https://graph.facebook.com/" + albumid + "/photos", function(data){
@@ -45,30 +29,6 @@
 					$('#galeria').append(newlink);
 				});
 			});
-
-			// Cargar videos de YouTube :)
-			$.each($('.yt-video'), function(idx, ytdiv){
-
-				video_url = ytdiv.getAttribute('data-youtube-video');
-
-				if (video_url.indexOf('=') != -1){
-					delimiter = "=";
-				}else{
-					delimiter = "/";
-				}
-
-				parts = video_url.split(delimiter);
-				video_id = parts[parts.length -1];
-
-				video_frame = $('<iframe></iframe>');
-				video_frame.attr('src', 'http://youtube.com/embed/' + video_id);
-				video_frame.attr('frameborder', 0);
-				video_frame.attr('allowfullscreen', 'allowfullscreen');
-
-				$(ytdiv).append(video_frame);
-
-			});
-
 
 		});
 	</script>

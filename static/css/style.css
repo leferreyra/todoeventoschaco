@@ -224,7 +224,7 @@ footer {
 
 .servicio {
 	background-color: rgba(0, 0, 0, 0.8);
-	border-radius: 4px;
+	border-radius: 3px;
 	margin-bottom: 10px;
 	width: 700px;
 	float: left;
@@ -233,7 +233,7 @@ footer {
 .contenedorImagenServicio{
 	width: 200px;
 	margin: 10px;
-	border-radius: 12px;
+	border-radius: 3px;
 	float: left;
 	overflow: auto;
 }
@@ -241,7 +241,7 @@ footer {
 .imagenServicio{
 	width: 100%;
 	height: auto;
-	border-radius: 12px;
+	border-radius: 3px;
 	float: left;
 }
 
