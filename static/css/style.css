@@ -100,6 +100,14 @@ footer {
 	height: 40px;
 }
 
+.music-player {
+	background: #151515;
+}
+
+.music-player #swf-player {
+	margin: 5px 0px;
+}
+
 .columna {
 	float: left;
 	margin-right: 10px;
