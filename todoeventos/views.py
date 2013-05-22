@@ -138,9 +138,20 @@ def noches(request):
 	p_h = random.shuffle(list(Publicidad.objects.filter(tipo = 'H')))
 	servicios= Servicio.objects.all()
 	banners = Banner.objects.all()
+	chicas = Galeria.objects.get(pk=1)
 	noches= Noche.objects.all().order_by('id').reverse()
 
-	return render_to_response('noches.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'noches': noches, 'servicios': servicios}, context_instance=RequestContext(request))
+	paginador = Paginator(noches, 6)
+	page = request.GET.get('page')
+
+	try:
+		articulos = paginador.page(page)
+	except PageNotAnInteger:
+		articulos = paginador.page(1)
+	except EmptyPage:
+		articulos = paginador.page(paginador.num_pages)
+
+	return render_to_response('lista_articulos.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'articulos': articulos, 'servicios': servicios, 'chicas': chicas, 'articulo_base_url': 'evento', 'menu_activo': 'noche'}, context_instance=RequestContext(request))
 
 def detalle_noche(request, id_noche):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
@@ -166,7 +177,7 @@ def galerias(request):
 	banners = Banner.objects.all()
 	chicas = Galeria.objects.get(pk=1)
 
-	galeria_lista = Galeria.objects.all().order_by('id').reverse()
+	galeria_lista = Galeria.objects.exclude(pk=1).order_by('id').reverse()
 
 	paginador = Paginator(galeria_lista, 6)
 	page = request.GET.get('page')
@@ -209,7 +220,7 @@ def comentarios(request):
 	banners = Banner.objects.all()
 	servicios= Servicio.objects.all()
 
-	return render_to_response('comentarios.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'comentarios': comentarios, 'servicios': servicios}, context_instance=RequestContext(request))
+	return render_to_response('comentarios.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'comentarios': comentarios, 'servicios': servicios, 'menu_activo': 'comentarios'}, context_instance=RequestContext(request))
 
 def detalle_servicio(request, id_servicio):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:7]
@@ -219,7 +230,7 @@ def detalle_servicio(request, id_servicio):
 	servicios= Servicio.objects.all()
 	comercios= Comercio.objects.filter(tipo_servicio= id_servicio)
 
-	return render_to_response('detalle_servicio.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'comercios': comercios, 'servicios': servicios}, context_instance=RequestContext(request))
+	return render_to_response('detalle_servicio.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'comercios': comercios, 'servicios': servicios, 'menu_activo': 'servicios'}, context_instance=RequestContext(request))
 
 def detalle_comercio(request, id_comercio):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:7]
@@ -229,10 +240,4 @@ def detalle_comercio(request, id_comercio):
 	servicios= Servicio.objects.all()
 	comercio= get_object_or_404(Comercio, pk= id_comercio)
 	
-	return render_to_response('detalle_comercio.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'comercio': comercio, 'servicios': servicios}, context_instance= RequestContext(request))
-
-def contacto(request):
-	subject = 'Nuevo comentario de: %s' % request.POST['nombre']
-	body = 'Mensaje: %s' % request.POST['mensaje']
-	send_mail(subject, body, 'contacto@todoeventoschaco.com', ['todo_eventoschaco@live.com'])
-	return HttpResponseRedirect('/eventos/')
+	return render_to_response('detalle_comercio.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'comercio': comercio, 'servicios': servicios, 'menu_activo': 'servicios'}, context_instance= RequestContext(request))
