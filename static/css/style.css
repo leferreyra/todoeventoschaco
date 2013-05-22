@@ -146,6 +146,11 @@ footer {
 
 .articulo iframe {
 	width: 100%;
+	height: 140px;
+}
+
+.columna.central .articulo iframe {
+	width: 100%;
 	height: 330px;
 }
 
