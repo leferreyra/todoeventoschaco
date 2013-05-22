@@ -206,6 +206,20 @@ footer {
 	font-size: 14px;
 }
 
+.detalle-articulo .datos {
+	margin: 0px;
+	padding: 0px;
+	padding-right: 10px;
+	font-size: 16px;
+	color: gray;
+}
+
+.detalle-articulo .datos span {
+	color: white;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
 .publicidad {
 	overflow: hidden;
 }

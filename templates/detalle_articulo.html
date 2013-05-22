@@ -35,14 +35,6 @@
 {% endblock %}
 
 {% block bodyfirst %}
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=1227945747345171";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
 {% endblock %}
 
 {% block content %}
@@ -57,6 +49,25 @@
 				</div>
 				<div class="columna-interna derecha">
 					<h1>{{ articulo.nombre }}</h1>
+					{% if articulo.fecha or articulo.lugar %}
+						<p class='fecha-lugar'>
+							{% if articulo.fecha %}
+								el {{ articulo.fecha }}
+							{% endif %}
+							{% if articulo.lugar %}
+								en {{ articulo.lugar }}
+							{% endif %}
+						</p>
+					{% endif %}
+					{% if articulo.telefono %}
+						<p class='datos'>Telefono: <span>{{ articulo.telefono }}</span></p>
+					{% endif %}
+					{% if articulo.direccion %}
+						<p class='datos'>Dirección: <span>{{ articulo.direccion }}</span></p>
+					{% endif %}
+					{% if articulo.email %}
+						<p class='datos'>E-mail: <span>{{ articulo.email }}</span></p>
+					{% endif %}
 					<p>{{ articulo.descripcion }}</p>
 				</div>
 			</div>
