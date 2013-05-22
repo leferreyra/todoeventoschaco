@@ -282,6 +282,17 @@ footer {
 	padding-bottom: 10px;
 }
 
+#share {
+	height: auto;
+	width: 230px;
+	padding: 10px;
+	height: 20px;
+}
+
+#share .twitter-follow-button {
+	margin-left: 10px;
+}
+
 #galeria .img {
 	height: 90px;
 	width: 90px;
