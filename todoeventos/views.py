@@ -134,7 +134,16 @@ def detalle_cartelera(request, id_cartelera):
 	banners = Banner.objects.all()
 	cartelera = get_object_or_404(Cartelera, pk= id_cartelera)
 	
-	return render_to_response('detalle_cartelera.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'cartelera': cartelera, 'servicios': servicios}, context_instance= RequestContext(request))
+	return render_to_response('detalle_articulo.html', 
+		{
+			'p_p': p_p,
+			'p_v': p_v, 
+			'p_h': p_h, 
+			'banners': banners, 
+			'cartelera': cartelera, 
+			'servicios': servicios
+		}, 
+		context_instance= RequestContext(request))
 
 def noches(request):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
@@ -158,7 +167,19 @@ def noches(request):
 	except EmptyPage:
 		articulos = paginador.page(paginador.num_pages)
 
-	return render_to_response('lista_articulos.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'articulos': articulos, 'servicios': servicios, 'chicas': chicas, 'articulo_base_url': 'evento', 'menu_activo': 'noche'}, context_instance=RequestContext(request))
+	return render_to_response('lista_articulos.html', 
+		{
+			'p_p': p_p, 
+			'p_v': p_v, 
+			'p_h': p_h, 
+			'banners': banners, 
+			'articulos': articulos, 
+			'servicios': servicios, 
+			'chicas': chicas, 
+			'articulo_base_url': 'noche', 
+			'menu_activo': 'noche'
+		}, 
+		context_instance=RequestContext(request))
 
 def detalle_noche(request, id_noche):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
@@ -171,7 +192,16 @@ def detalle_noche(request, id_noche):
 	banners = Banner.objects.all()
 	noche = get_object_or_404(Noche, pk= id_noche)
 	
-	return render_to_response('detalle_noche.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'noche': noche, 'servicios': servicios}, context_instance= RequestContext(request))
+	return render_to_response('detalle_articulo.html', 
+		{
+			'p_p': p_p, 
+			'p_v': p_v, 
+			'p_h': p_h, 
+			'banners': banners, 
+			'noche': noche, 
+			'servicios': servicios
+		}, 
+		context_instance= RequestContext(request))
 
 def galerias(request):
 
@@ -224,7 +254,16 @@ def detalle_galeria(request, id_galeria):
 	banners = Banner.objects.all()
 	galeria = get_object_or_404(Galeria, pk= id_galeria)
 
-	return render_to_response('detalle_galeria.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'galeria': galeria, 'servicios': servicios}, context_instance= RequestContext(request))
+	return render_to_response('detalle_articulo.html', 
+		{
+			'p_p': p_p, 
+			'p_v': p_v, 
+			'p_h': p_h, 
+			'banners': banners, 
+			'galeria': galeria, 
+			'servicios': servicios
+		}, 
+		context_instance= RequestContext(request))
 
 def comentarios(request):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
@@ -236,7 +275,17 @@ def comentarios(request):
 	banners = Banner.objects.all()
 	servicios= Servicio.objects.all()
 
-	return render_to_response('comentarios.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'comentarios': comentarios, 'servicios': servicios, 'menu_activo': 'comentarios'}, context_instance=RequestContext(request))
+	return render_to_response('comentarios.html', 
+		{
+			'p_p': p_p, 
+			'p_v': p_v, 
+			'p_h': p_h, 
+			'banners': banners, 
+			'comentarios': comentarios, 
+			'servicios': servicios, 
+			'menu_activo': 'comentarios'
+		}, 
+		context_instance=RequestContext(request))
 
 def detalle_servicio(request, id_servicio):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:7]
@@ -249,7 +298,17 @@ def detalle_servicio(request, id_servicio):
 	servicios= Servicio.objects.all()
 	comercios= Comercio.objects.filter(tipo_servicio= id_servicio)
 
-	return render_to_response('servicio.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'comercios': comercios, 'servicios': servicios, 'menu_activo': 'servicios'}, context_instance=RequestContext(request))
+	return render_to_response('servicio.html', 
+		{
+			'p_p': p_p, 
+			'p_v': p_v, 
+			'p_h': p_h, 
+			'banners': banners, 
+			'comercios': comercios, 
+			'servicios': servicios, 
+			'menu_activo': 'servicios'
+		}, 
+		context_instance=RequestContext(request))
 
 def detalle_comercio(request, id_comercio):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:7]
@@ -262,4 +321,14 @@ def detalle_comercio(request, id_comercio):
 	servicios= Servicio.objects.all()
 	comercio= get_object_or_404(Comercio, pk= id_comercio)
 	
-	return render_to_response('detalle_articulo.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'articulo': comercio, 'servicios': servicios, 'menu_activo': 'servicios'}, context_instance= RequestContext(request))
+	return render_to_response('detalle_articulo.html', 
+		{
+			'p_p': p_p, 
+			'p_v': p_v, 
+			'p_h': p_h, 
+			'banners': banners, 
+			'articulo': comercio, 
+			'servicios': servicios, 
+			'menu_activo': 'servicios'
+		}, 
+		context_instance= RequestContext(request))
