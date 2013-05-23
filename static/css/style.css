@@ -9,7 +9,7 @@ html {
 
 nav {
 	width: 100%;
-	overflow: auto;
+	height: 50px;
 	text-transform: uppercase;
 	font-weight: bold;
 }
@@ -29,14 +29,43 @@ nav a.active {
 }
 
 nav ul {
+	margin: 0px;
 	list-style: none;
 	padding: 0px;
 	float: right;
+	height: 50px;
 }
 
-nav ul li {
+nav ul > li {
+	position: relative;
 	display: inline;
 	margin-right: 20px;
+	padding: 16px 0px;
+	line-height: 50px;
+}
+
+nav ul ul {
+	z-index: 500;
+	position: absolute;
+	top: 100%;
+	display: none;
+	width: 200px;
+}
+
+nav ul ul li {
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	padding: 5px 20px;
+	background: rgba(0,0,0,0.5);
+}
+
+nav ul li:hover > ul {
+	display: block;
+}
+
+nav ul ul li:hover {
+	background: rgba(0,0,0,0.8);
 }
 
 footer {
@@ -71,6 +100,14 @@ footer {
 	height: 40px;
 }
 
+.music-player {
+	background: #151515;
+}
+
+.music-player #swf-player {
+	margin: 5px 0px;
+}
+
 .columna {
 	float: left;
 	margin-right: 10px;
@@ -100,6 +137,12 @@ footer {
 
 .columna-interna .portada {
 	width: 94%;
+	margin: 3%;
+}
+
+.columna-interna .yt-video iframe {
+	width: 94%;
+	min-height: 200px;
 	margin: 3%;
 }
 
@@ -138,6 +181,16 @@ footer {
 	text-decoration: underline;
 }
 
+.articulo iframe {
+	width: 100%;
+	height: 140px;
+}
+
+.columna.central .articulo iframe {
+	width: 100%;
+	height: 330px;
+}
+
 .detalle-articulo {
 	overflow: auto;
 }
@@ -161,6 +214,20 @@ footer {
 	font-size: 14px;
 }
 
+.detalle-articulo .datos {
+	margin: 0px;
+	padding: 0px;
+	padding-right: 10px;
+	font-size: 16px;
+	color: gray;
+}
+
+.detalle-articulo .datos span {
+	color: white;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
 .publicidad {
 	overflow: hidden;
 }
@@ -175,13 +242,13 @@ footer {
 	width: 700px;
 	float: left;
 	margin-bottom: 10px;
+	min-height: 800px;
 }
 
-<<<<<<< HEAD
-.servicio{
+
+.servicio {
 	background-color: rgba(0, 0, 0, 0.8);
-	border-radius: 4px;
-	margin-top: 10px;
+	border-radius: 3px;
 	margin-bottom: 10px;
 	width: 700px;
 	float: left;
@@ -189,21 +256,23 @@ footer {
 
 .contenedorImagenServicio{
 	width: 200px;
-	height: 180px;
 	margin: 10px;
-	border-radius: 12px;
+	border-radius: 3px;
 	float: left;
-
+	overflow: auto;
 }
 
 .imagenServicio{
 	width: 100%;
 	height: auto;
-	border-radius: 12px;
+	border-radius: 3px;
+	float: left;
 }
 
 .textoServicio{
 	margin: 10px;
+	width: 460px;
+	float: right;
 }
 
 .tituloServicio{
@@ -218,22 +287,58 @@ footer {
 	font-size: 14px;
 	font-weight: normal;
 	color: white;
-	height: 108px;
 }
 
 .masInfoServicio{
 	font-size: 14px;
 	font-weight: normal;
-	color: white;
+	color: #09f;
 	font-weight: normal;
 	text-decoration: none;
-	float: right;
 }
 
-=======
+.masInfoServicio:hover {
+	text-decoration: underline;
+}
+
+.sharing {
+	position: relative;
+	top: -10px;
+}
+
+.sharing .fb-share {
+	margin: 0px;
+	padding: 0px;
+}
+
+.sharing .twitter-share-button {
+	position: relative;
+	top: 6px;
+	left: 10px;
+	margin: 0px;
+	padding: 0px;
+}
+
+#logo {
+	display: block;
+	margin: 0px auto 0px;
+}
+
+
 #galeria {
 	overflow: auto;
 	padding-bottom: 10px;
+}
+
+#share {
+	height: auto;
+	width: 230px;
+	padding: 10px;
+	height: 20px;
+}
+
+#share .twitter-follow-button {
+	margin-left: 10px;
 }
 
 #galeria .img {
@@ -249,7 +354,6 @@ footer {
 
 }
 
->>>>>>> 67416de4f96a1ed97753ee60b8e167700fe53950
 #container {
 	width: 960px;
 	margin: 20px auto 0px;
@@ -296,4 +400,17 @@ footer {
 	border-bottom: solid 5px #383636;
 	margin: 0 auto;
 	border-radius:7px;
+}
+
+#paginacion .step-links {
+	color: white;
+}
+
+#paginacion a {
+	color: #09f;
+}
+
+#paginacion {
+	padding: 10px 0px;
+	text-align: center;
 }

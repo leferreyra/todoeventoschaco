@@ -33,6 +33,47 @@
                 lastSlide: function(){}, // Triggers when last slide is shown
                 afterLoad: function(){} // Triggers when slider has loaded
             });
+
+        });
+
+        $(document).ready(function(){
+
+            // Cargar portadas desde Facebook ;)
+            var images = $(document.images)
+            $.each(images, function(idx, img){
+                if (img.hasAttribute('data-fbalbum-url')){
+                    albumid = img.getAttribute('data-fbalbum-url').split('.')[3];
+                    $.getJSON("https://graph.facebook.com/" + albumid, function(data){
+                        cover = data['cover_photo'];
+                        $.getJSON("https://graph.facebook.com/" + cover, function(data){
+                            img.src = data['images'][3]['source'];
+                        });
+                    });
+                }
+            });
+
+            // Cargar videos de YouTube :)
+            $.each($('.yt-video'), function(idx, ytdiv){
+
+                video_url = ytdiv.getAttribute('data-youtube-video');
+
+                if (video_url.indexOf('=') != -1){
+                    delimiter = "=";
+                }else{
+                    delimiter = "/";
+                }
+
+                parts = video_url.split(delimiter);
+                video_id = parts[parts.length -1];
+
+                video_frame = $('<iframe></iframe>');
+                video_frame.attr('src', 'http://youtube.com/embed/' + video_id);
+                video_frame.attr('frameborder', 0);
+                video_frame.attr('allowfullscreen', 'allowfullscreen');
+
+                $(ytdiv).append(video_frame);
+            });
+
         });
     </script>
     {% block head_m %}{% endblock %}
@@ -40,7 +81,20 @@
 
 {% block body %}
 
+    {% block bodyfirst %}
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=1227945747345171";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+    {% endblock %}
+
     <div id='container'>
+
+        <img src='{{ STATIC_URL }}img/logo.png' id='logo'>
 
         <nav class='bloque'>
             {% block nav %}
@@ -55,7 +109,12 @@
                         <a class='{% if menu_activo == "galeria" %}active{% endif %}' href='/galerias/'>Galeria</a>
                     </li>
                     <li>
-                        <a class='{% if menu_activo == "servicios" %}active{% endif %}' href='/servicios/'>Servicios</a>
+                        <a class='{% if menu_activo == "servicios" %}active{% endif %}' href='#'>Servicios</a>
+                        <ul>
+                            {% for servicio in servicios %}
+                                <a href='/servicio/{{ servicio.id }}'><li>{{ servicio.nombre }}</li></a>
+                            {% endfor %}
+                        </ul>
                     </li>
                     <li>
                         <a class='{% if menu_activo == "noche" %}active{% endif %}' href='/noches/'>Noche</a>
@@ -86,12 +145,25 @@
                     </div>
                 </div>
                 <div class="columna central">
-                    <div class="bloque">
-
+                    <div class="bloque music-player">
+                        <!-- BEGINS: AUTO-GENERATED Museter unlimited SHOUTcast Hosting Museter.com plans start at $6.95 CODE visit http://www.museter.com -->
+                        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="180" height="30">
+                        <param name="movie" value="http://www.museter.com/ffmp3-config.swf" />
+                        <param name="flashvars" value="url=http://streams.museter.com:8002/;&lang=sp&codec=mp3&volume=65&introurl=&autoplay=true&traking=true&jsevents=false&buffering=5&skin=http://www.museter.com/skins/substream/ffmp3-substream.xml&title=Energynet&welcome=Bienvenido!" />
+                        <param name="wmode" value="transparent" />
+                        <param name="allowscriptaccess" value="always" />
+                        <param name="scale" value="noscale" />
+                        <embed id='swf-player' src="http://www.museter.com/ffmp3-config.swf" flashvars="url=http://streams.museter.com:8002/;&lang=sp&codec=mp3&volume=65&introurl=&autoplay=true&traking=true&jsevents=false&buffering=5&skin=http://www.museter.com/skins/substream/ffmp3-substream.xml&title=Energynet&welcome=Bienvenido!" width="440" scale="noscale" height="30" wmode="transparent" allowscriptaccess="always" type="application/x-shockwave-flash" />
+                        </object>
+                        <!-- ENDS: AUTO-GENERATED Museter unlimited SHOUTcast Hosting Museter.com plans start at $6.95 CODE visit http://www.museter.com-->
                     </div>
                 </div>
                 <div class="columna derecha">
-                    <div class="bloque">xD</div>
+                    <div id='share' class="bloque">
+                        <div class="fb-like" data-href="http://www.facebook.com/todoeventos.chaco" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-colorscheme="dark"></div>
+                        <a href="https://twitter.com/todoeventoschac" data-show-screen-name="false" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir @todoeventoschac</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    </div>
                 </div>
             </div>
             {% block content %}

@@ -11,31 +11,15 @@
 
 		$(document).ready(function(){
 
-			// Cargar la portada del album (si es una foto)
-
 			var albumid = "{{ articulo.url_del_album }}".split('.')[3];
 
-			var images = $(document.images)
-			$.each(images, function(idx, img){
-				if (img.hasAttribute('data-fbalbum-url')){
-					
-					$.getJSON("https://graph.facebook.com/" + albumid, function(data){
-						cover = data['cover_photo'];
-						$.getJSON("https://graph.facebook.com/" + cover, function(data){
-							img.src = data['images'][3]['source'];
-						});
-					});
-				}
-			});
-
-
 			// Cargar fotos del album
-			$.getJSON("https://graph.facebook.com/" + albumid + "/photos", function(data){
+			$.getJSON("https://graph.facebook.com/" + albumid + "/photos?limit=500", function(data){
 				$.each(data['data'], function(idx, img){
 					var newimg = $('<div><div>');
 					var newlink = $('<a></a>');
 
-					newlink.attr('href', img.images[0].source);
+					newlink.attr('href', img.images[2].source);
 					newlink.attr('rel', 'lightbox['+ albumid +']');
 
 					newimg.addClass('img');
@@ -46,29 +30,77 @@
 				});
 			});
 
-
 		});
+
+		function shareOnFacebook(){
+			var sharer = "https://www.facebook.com/sharer/sharer.php?u=";
+			window.open(sharer + location.href, 'sharer', 'width=626,height=436' + ',left='+(screen.width-626)/2+',top='+(screen.height-436)/2);
+		}
+
 	</script>
+
+	<meta property="og:site_name" content="Todo Eventos Chaco"/>
+	<meta property="og:app_id" content="1227945747345171" />
+	<meta property="og:title" content="{{ articulo.nombre }}"/>
+	<meta property="og:type" content="{{ articulo_base_url }}"/>
+	<meta property="og:description" content="{{ articulo.descripcion }}"/>
+
 {% endblock %}
 
+{% block bodyfirst %}
+{% endblock %}
 
 {% block content %}
 		<div class="columna principal">
 			<div class="detalle-articulo bloque">
 				<div class="columna-interna izquierda">
-					<img class='portada' data-fbalbum-url="{{ articulo.url_del_album }}">
+					{% if articulo.url_del_video %}
+						<div class='yt-video' data-youtube-video='{{ articulo.url_del_video }}'></div>
+					{% else %}
+						<img class='portada' data-fbalbum-url="{{ articulo.url_del_album }}">
+					{% endif %}
 				</div>
 				<div class="columna-interna derecha">
 					<h1>{{ articulo.nombre }}</h1>
+					{% if articulo.fecha or articulo.lugar %}
+						<p class='fecha-lugar'>
+							{% if articulo.fecha %}
+								el {{ articulo.fecha }}
+							{% endif %}
+							{% if articulo.lugar %}
+								en {{ articulo.lugar }}
+							{% endif %}
+						</p>
+					{% endif %}
+					{% if articulo.telefono %}
+						<p class='datos'>Telefono: <span>{{ articulo.telefono }}</span></p>
+					{% endif %}
+					{% if articulo.direccion %}
+						<p class='datos'>Dirección: <span>{{ articulo.direccion }}</span></p>
+					{% endif %}
+					{% if articulo.email %}
+						<p class='datos'>E-mail: <span>{{ articulo.email }}</span></p>
+					{% endif %}
 					<p>{{ articulo.descripcion }}</p>
+					<p class='sharing'>
+						<a class='fb-share' href="#" onclick='shareOnFacebook(); return false;'><img src='{{ STATIC_URL }}img/compartir-fb.png'></a>
+						<a href="https://twitter.com/share" class="twitter-share-button" data-lang="es" data-via="todoeventoschac">Twittear</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+					</p>
 				</div>
 			</div>
-			<div id='galeria' class="galeria bloque">
 
-			</div>
+			<div id='galeria' class="galeria bloque"></div>
+
 		</div>
 
 		<div class="columna derecha">
+			{% ifnotequal p_v|length 0 %}
+				<div class="publicidad bloque">
+					<img src="{{ p_v.0.url_imagen_publicidad }}" alt="">
+					{{ p_v.pop.0 }}
+				</div>
+			{% endifnotequal %}
 			{% ifnotequal p_v|length 0 %}
 				<div class="publicidad bloque">
 					<img src="{{ p_v.0.url_imagen_publicidad }}" alt="">

@@ -39,7 +39,7 @@ class Publicidad(models.Model):
 	tipo = models.CharField(max_length=50, choices = TIPO_CHOICES, null = False)
 
 	def __unicode__(self):
-		return self.nombre
+		return self.nombre + "(" + self.tipo + ")"
 
 
 class Cartelera(models.Model):
@@ -73,7 +73,7 @@ class Noche(models.Model):
 		return self.nombre
 
 	def descripcion(self):
-		return self.fecha
+		return ''
 
 class Galeria(models.Model):
 	nombre = models.CharField(max_length=100)

@@ -15,13 +15,12 @@ urlpatterns = patterns('',
    	url(r'^carteleras/' , 'todoeventos.views.carteleras'),
    	url(r'^noche/(?P<id_noche>\d+)$', 'todoeventos.views.detalle_noche'),
    	url(r'^noches/' , 'todoeventos.views.noches'),
-    url(r'^galeria/(?P<id_social>\d+)$' , 'todoeventos.views.detalle_galeria'),
+    url(r'^galeria/(?P<id_galeria>\d+)$' , 'todoeventos.views.detalle_galeria'),
     url(r'^galerias/' , 'todoeventos.views.galerias'),
     url(r'^comentarios/' , 'todoeventos.views.comentarios'),
 
     url(r'^comercio/(?P<id_comercio>\d+)$' , 'todoeventos.views.detalle_comercio'),
     url(r'^servicio/(?P<id_servicio>\d+)$' , 'todoeventos.views.detalle_servicio'),    
-    url(r'contacto', 'todoeventos.views.contacto'),
 
 )
 
