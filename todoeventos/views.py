@@ -283,7 +283,6 @@ def comentarios(request):
 			'p_v': p_v, 
 			'p_h': p_h, 
 			'banners': banners, 
-			'comentarios': comentarios, 
 			'servicios': servicios, 
 			'menu_activo': 'comentarios'
 		}, 
