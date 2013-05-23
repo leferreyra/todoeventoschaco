@@ -121,6 +121,22 @@
 
 				{% endif %}
 			{% endfor %}
+
+			<div id="paginacion" class="bloque">
+			    <span class="step-links">
+			        {% if articulos.has_previous %}
+			            <a href="?page={{ articulos.previous_page_number }}">Anterior</a>
+			        {% endif %}
+
+			        <span class="current">
+			            Pagina {{ articulos.number }} de {{ articulos.paginator.num_pages }}
+			        </span>
+
+			        {% if articulos.has_next %}
+			            <a href="?page={{ articulos.next_page_number }}">Siguiente</a>
+			        {% endif %}
+			    </span>
+			</div>
 		</div>
 		<div class="columna derecha">
 			{% for articulo in articulos %}

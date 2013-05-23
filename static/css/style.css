@@ -375,3 +375,16 @@ footer {
 	margin: 0 auto;
 	border-radius:7px;
 }
+
+#paginacion .step-links {
+	color: white;
+}
+
+#paginacion a {
+	color: #09f;
+}
+
+#paginacion {
+	padding: 10px 0px;
+	text-align: center;
+}
