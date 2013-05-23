@@ -200,7 +200,7 @@ def detalle_noche(request, id_noche):
 			'p_v': p_v, 
 			'p_h': p_h, 
 			'banners': banners, 
-			'noche': noche, 
+			'articulo': noche, 
 			'servicios': servicios
 		}, 
 		context_instance= RequestContext(request))
