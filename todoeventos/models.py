@@ -61,7 +61,6 @@ class Evento(models.Model):
 	url_del_video = models.CharField(max_length=500, blank=True, null=True)
 	video_como_portada = models.BooleanField()
 
-
 	def __unicode__(self):
 		return self.nombre
 
