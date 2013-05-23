@@ -224,7 +224,7 @@ def detalle_galeria(request, id_galeria):
 	banners = Banner.objects.all()
 	galeria = get_object_or_404(Galeria, pk= id_galeria)
 
-	return render_to_response('detalle_galeria.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'galeria': galeria, 'servicios': servicios}, context_instance= RequestContext(request))
+	return render_to_response('detalle_articulo.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'articulo': galeria, 'servicios': servicios}, context_instance= RequestContext(request))
 
 def comentarios(request):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
