@@ -299,6 +299,24 @@ footer {
 	text-decoration: underline;
 }
 
+.sharing {
+	position: relative;
+	top: -10px;
+}
+
+.sharing .fb-share {
+	margin: 0px;
+	padding: 0px;
+}
+
+.sharing .twitter-share-button {
+	position: relative;
+	top: 6px;
+	left: 10px;
+	margin: 0px;
+	padding: 0px;
+}
+
 #galeria {
 	overflow: auto;
 	padding-bottom: 10px;
