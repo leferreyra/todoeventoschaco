@@ -167,6 +167,7 @@ def noches(request):
 	except EmptyPage:
 		articulos = paginador.page(paginador.num_pages)
 
+
 	return render_to_response('lista_articulos.html', 
 		{
 			'p_p': p_p, 
@@ -180,6 +181,7 @@ def noches(request):
 			'menu_activo': 'noche'
 		}, 
 		context_instance=RequestContext(request))
+
 
 def detalle_noche(request, id_noche):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]

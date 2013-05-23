@@ -14,7 +14,7 @@
 	{% for comercio in comercios %}
 	<div class='servicio'>
 		<div class="contenedorImagenServicio">
-			<img src="{{comercio.link_de_la_imagen_del_comercio" class="imagenServicio">
+			<img data-fbalbum-url='{{ comercio.url_del_album }}' class="imagenServicio">
 		</div>
 		<div class="textoServicio">
 			<a href="/comercio/{{comercio.id}}" class="tituloServicio">{{comercio.nombre}}</a>

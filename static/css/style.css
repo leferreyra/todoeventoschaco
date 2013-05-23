@@ -242,6 +242,7 @@ footer {
 	width: 700px;
 	float: left;
 	margin-bottom: 10px;
+	min-height: 800px;
 }
 
 .servicio {
@@ -297,6 +298,29 @@ footer {
 
 .masInfoServicio:hover {
 	text-decoration: underline;
+}
+
+.sharing {
+	position: relative;
+	top: -10px;
+}
+
+.sharing .fb-share {
+	margin: 0px;
+	padding: 0px;
+}
+
+.sharing .twitter-share-button {
+	position: relative;
+	top: 6px;
+	left: 10px;
+	margin: 0px;
+	padding: 0px;
+}
+
+#logo {
+	display: block;
+	margin: 0px auto 0px;
 }
 
 #galeria {
@@ -374,4 +398,17 @@ footer {
 	border-bottom: solid 5px #383636;
 	margin: 0 auto;
 	border-radius:7px;
+}
+
+#paginacion .step-links {
+	color: white;
+}
+
+#paginacion a {
+	color: #09f;
+}
+
+#paginacion {
+	padding: 10px 0px;
+	text-align: center;
 }
