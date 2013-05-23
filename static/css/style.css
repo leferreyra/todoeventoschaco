@@ -319,6 +319,52 @@ footer {
 	padding: 0px;
 }
 
+.daniel{
+	width: 576px;
+	float: left;
+}
+
+.textoFooterDaniel{
+	color: #645C5C;
+	font-size: 14px;
+	margin: 8px;
+}
+
+.textoContactoRomero{
+	text-decoration: none;
+	font-size: 14px;
+	color: white;
+	padding-left: 80px;
+}
+
+.textoContactoFooter{
+	text-decoration: none;
+	font-size: 14px;
+	color: white;
+}
+
+.textoFooterW3bex{
+	color: #645C5C;
+	font-size: 14px;
+	margin: 8px;
+	text-align: right;
+	padding-right: 6px;
+	padding-top: 15px;
+}
+
+.w3bex{
+	width: 140px;
+	height: 200px;
+	float: right;
+	border-left: solid 2px #645C5C;
+}
+
+.footerImgW3bex{
+	float: right;
+	margin-right: 5px;
+	margin-top: -5px;
+}
+
 #logo {
 	display: block;
 	margin: 0px auto 0px;
