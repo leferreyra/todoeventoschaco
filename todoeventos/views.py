@@ -249,7 +249,7 @@ def detalle_servicio(request, id_servicio):
 	servicios= Servicio.objects.all()
 	comercios= Comercio.objects.filter(tipo_servicio= id_servicio)
 
-	return render_to_response('detalle_servicio.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'comercios': comercios, 'servicios': servicios, 'menu_activo': 'servicios'}, context_instance=RequestContext(request))
+	return render_to_response('servicio.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'comercios': comercios, 'servicios': servicios, 'menu_activo': 'servicios'}, context_instance=RequestContext(request))
 
 def detalle_comercio(request, id_comercio):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:7]
