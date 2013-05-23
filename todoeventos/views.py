@@ -158,7 +158,7 @@ def noches(request):
 	except EmptyPage:
 		articulos = paginador.page(paginador.num_pages)
 
-	return render_to_response('lista_articulos.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'articulos': articulos, 'servicios': servicios, 'chicas': chicas, 'articulo_base_url': 'evento', 'menu_activo': 'noche'}, context_instance=RequestContext(request))
+	return render_to_response('lista_articulos.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'articulos': articulos, 'servicios': servicios, 'chicas': chicas, 'articulo_base_url': 'noche', 'menu_activo': 'noche'}, context_instance=RequestContext(request))
 
 def detalle_noche(request, id_noche):
 	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
@@ -171,7 +171,7 @@ def detalle_noche(request, id_noche):
 	banners = Banner.objects.all()
 	noche = get_object_or_404(Noche, pk= id_noche)
 	
-	return render_to_response('detalle_noche.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'noche': noche, 'servicios': servicios}, context_instance= RequestContext(request))
+	return render_to_response('detalle_articulo.html', {'p_p': p_p, 'p_v': p_v, 'p_h': p_h, 'banners': banners, 'articulo': noche, 'servicios': servicios}, context_instance= RequestContext(request))
 
 def galerias(request):
 

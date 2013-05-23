@@ -242,6 +242,7 @@ footer {
 	width: 700px;
 	float: left;
 	margin-bottom: 10px;
+	min-height: 800px;
 }
 
 .servicio {

@@ -73,7 +73,7 @@ class Noche(models.Model):
 		return self.nombre
 
 	def descripcion(self):
-		return self.fecha
+		return ''
 
 class Galeria(models.Model):
 	nombre = models.CharField(max_length=100)
