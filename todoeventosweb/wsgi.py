@@ -1,5 +1,5 @@
 """
-WSGI config for todoeventosweb project.
+WSGI config for w3bex_web project.
 
 This module contains the WSGI application used by Django's development server
 and any production WSGI deployments. It should expose a module-level variable
@@ -14,8 +14,21 @@ framework.
 
 """
 import os
+import sys
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "todoeventosweb.settings")
+path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+if path not in sys.path:
+	sys.path.append(path)
+
+
+sys.path.append('/home/todoeventoschaco/')
+sys.path.append('/home/todoeventoschaco/todoeventoschaco/')
+
+
+
+os.environ["DJANGO_SETTINGS_MODULE"] = "todoeventosweb.settings"
+os.environ['PYTHON_EGG_CACHE'] = '/tmp/'
 
 # This application object is used by any WSGI server configured to use this
 # file. This includes Django's development server, if the WSGI_APPLICATION
