@@ -14,7 +14,7 @@
 			var albumid = "{{ articulo.url_del_album }}".split('.')[3];
 
 			// Cargar fotos del album
-			$.getJSON("https://graph.facebook.com/" + albumid + "/photos", function(data){
+			$.getJSON("https://graph.facebook.com/" + albumid + "/photos?limit=500", function(data){
 				$.each(data['data'], function(idx, img){
 					var newimg = $('<div><div>');
 					var newlink = $('<a></a>');
