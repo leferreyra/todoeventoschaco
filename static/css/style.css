@@ -100,6 +100,14 @@ footer {
 	height: 40px;
 }
 
+.music-player {
+	background: #151515;
+}
+
+.music-player #swf-player {
+	margin: 5px 0px;
+}
+
 .columna {
 	float: left;
 	margin-right: 10px;
@@ -206,6 +214,20 @@ footer {
 	font-size: 14px;
 }
 
+.detalle-articulo .datos {
+	margin: 0px;
+	padding: 0px;
+	padding-right: 10px;
+	font-size: 16px;
+	color: gray;
+}
+
+.detalle-articulo .datos span {
+	color: white;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
 .publicidad {
 	overflow: hidden;
 }
@@ -224,7 +246,7 @@ footer {
 
 .servicio {
 	background-color: rgba(0, 0, 0, 0.8);
-	border-radius: 4px;
+	border-radius: 3px;
 	margin-bottom: 10px;
 	width: 700px;
 	float: left;
@@ -233,7 +255,7 @@ footer {
 .contenedorImagenServicio{
 	width: 200px;
 	margin: 10px;
-	border-radius: 12px;
+	border-radius: 3px;
 	float: left;
 	overflow: auto;
 }
@@ -241,7 +263,7 @@ footer {
 .imagenServicio{
 	width: 100%;
 	height: auto;
-	border-radius: 12px;
+	border-radius: 3px;
 	float: left;
 }
 
@@ -280,6 +302,17 @@ footer {
 #galeria {
 	overflow: auto;
 	padding-bottom: 10px;
+}
+
+#share {
+	height: auto;
+	width: 230px;
+	padding: 10px;
+	height: 20px;
+}
+
+#share .twitter-follow-button {
+	margin-left: 10px;
 }
 
 #galeria .img {
