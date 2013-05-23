@@ -39,7 +39,6 @@
 {% endblock %}
 
 {% block content %}
-
 		<div class="columna izquierda">
 			{% for articulo in articulos %}
 				{% if forloop.counter > 2 and forloop.counter < 5 %}
@@ -63,8 +62,7 @@
 
 					{% ifnotequal p_v|length 0 %}
 						<div class="publicidad bloque">
-							<img src="{{ p_v.0.url_imagen_publicidad }}" alt="">
-							{{ p_v.pop.0 }}
+							<img src="{{ p_v.pop.url_imagen_publicidad }}" alt="">
 						</div>
 					{% endifnotequal %}
 
@@ -95,10 +93,11 @@
 
 					{# Chicas! #}
 					{% ifequal forloop.counter 1 %}
-						<div class="publicidad bloque">
-							<img src="{{ p_h.0.url_imagen_publicidad }}" alt="">
-							{{ p_h.pop.0 }}
-						</div>
+						{% ifnotequal p_h|length 0 %}
+							<div class="publicidad bloque">
+								<img src="{{ p_h.pop.url_imagen_publicidad }}" alt="">
+							</div>
+						{% endifnotequal %}
 
 						<div class="articulo bloque">
 							<h2><a href="/galeria/1">{{ chicas.nombre }}</a></h2>
@@ -114,8 +113,7 @@
 
 					{% ifnotequal p_h|length 0 %}
 						<div class="publicidad bloque">
-							<img src="{{ p_h.0.url_imagen_publicidad }}" alt="">
-							{{ p_h.pop.0 }}
+							<img src="{{ p_h.pop.url_imagen_publicidad }}" alt="">
 						</div>
 					{% endifnotequal %}
 
@@ -160,8 +158,7 @@
 
 					{% ifnotequal p_v|length 0 %}
 						<div class="publicidad bloque">
-							<img src="{{ p_v.0.url_imagen_publicidad }}" alt="">
-							{{ p_v.pop.0 }}
+							<img src="{{ p_v.pop.url_imagen_publicidad }}" alt="">
 						</div>
 					{% endifnotequal %}
 
