@@ -322,6 +322,8 @@ footer {
 .daniel{
 	width: 576px;
 	float: left;
+	padding-left: 20px;
+	padding-top: 15px;
 }
 
 .textoFooterDaniel{
@@ -356,7 +358,8 @@ footer {
 	width: 140px;
 	height: 200px;
 	float: right;
-	border-left: solid 2px #645C5C;
+	padding-right: 20px;
+	/*border-left: solid 2px #645C5C;*/
 }
 
 .footerImgW3bex{
