@@ -318,6 +318,11 @@ footer {
 	padding: 0px;
 }
 
+#logo {
+	display: block;
+	margin: 0px auto 0px;
+}
+
 #galeria {
 	overflow: auto;
 	padding-bottom: 10px;

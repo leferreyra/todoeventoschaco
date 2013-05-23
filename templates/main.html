@@ -37,7 +37,7 @@
         });
 
         $(document).ready(function(){
-            
+
             // Cargar portadas desde Facebook ;)
             var images = $(document.images)
             $.each(images, function(idx, img){
@@ -93,6 +93,8 @@
     {% endblock %}
 
     <div id='container'>
+
+        <img src='{{ STATIC_URL }}img/logo.png' id='logo'>
 
         <nav class='bloque'>
             {% block nav %}
