@@ -104,6 +104,13 @@ footer {
 	background: #151515;
 }
 
+.music-player .radio-text {
+	float: right;
+	line-height: 40px;
+	margin-right: 20px;
+	color: white;
+}
+
 .music-player #swf-player {
 	margin: 5px 0px;
 }
