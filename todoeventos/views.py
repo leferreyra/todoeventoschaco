@@ -262,7 +262,7 @@ def detalle_galeria(request, id_galeria):
 			'p_v': p_v, 
 			'p_h': p_h, 
 			'banners': banners, 
-			'galeria': galeria, 
+			'articulo': galeria, 
 			'servicios': servicios
 		}, 
 		context_instance= RequestContext(request))

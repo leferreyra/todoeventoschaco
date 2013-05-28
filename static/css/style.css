@@ -57,7 +57,7 @@ nav ul ul li {
 	height: 30px;
 	line-height: 30px;
 	padding: 5px 20px;
-	background: rgba(0,0,0,0.5);
+	background: rgba(0,0,0,0.9);
 }
 
 nav ul li:hover > ul {
@@ -65,7 +65,7 @@ nav ul li:hover > ul {
 }
 
 nav ul ul li:hover {
-	background: rgba(0,0,0,0.8);
+	background: black;
 }
 
 footer {
@@ -102,6 +102,13 @@ footer {
 
 .music-player {
 	background: #151515;
+}
+
+.music-player .radio-text {
+	float: right;
+	line-height: 40px;
+	margin-right: 20px;
+	color: white;
 }
 
 .music-player #swf-player {
@@ -178,7 +185,7 @@ footer {
 }
 
 .articulo a.readon:hover {
-	text-decoration: underline;
+	text-shadow: 0px 0px 15px #09f;
 }
 
 .articulo iframe {
@@ -298,7 +305,7 @@ footer {
 }
 
 .masInfoServicio:hover {
-	text-decoration: underline;
+	text-shadow: 0px 0px 15px #09f;
 }
 
 .sharing {
@@ -322,6 +329,8 @@ footer {
 .daniel{
 	width: 576px;
 	float: left;
+	padding-left: 20px;
+	padding-top: 15px;
 }
 
 .textoFooterDaniel{
@@ -356,7 +365,8 @@ footer {
 	width: 140px;
 	height: 200px;
 	float: right;
-	border-left: solid 2px #645C5C;
+	padding-right: 20px;
+	/*border-left: solid 2px #645C5C;*/
 }
 
 .footerImgW3bex{
@@ -454,6 +464,11 @@ footer {
 
 #paginacion a {
 	color: #09f;
+	text-decoration: none;
+}
+
+#paginacion a:hover {
+	text-shadow: 0px 0px 15px #09f;
 }
 
 #paginacion {
