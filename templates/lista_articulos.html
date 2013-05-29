@@ -43,7 +43,7 @@
 			{% for articulo in articulos %}
 				{% if forloop.counter > 2 and forloop.counter < 5 %}
 					<div class="articulo bloque">
-						<h2><a href="/{{ articulo_base_url }}/{{ articulo.id }}">{{ articulo.nombre }}</a></h2>
+						<h2><a class="tituloArticulo" href="/{{ articulo_base_url }}/{{ articulo.id }}">{{ articulo.nombre }}</a></h2>
 
 						{% if articulo.url_del_video and articulo.video_como_portada %}
 							<div class='yt-video' data-youtube-video='{{ articulo.url_del_video }}'></div>
@@ -75,7 +75,7 @@
 				{% if forloop.counter < 3 %}
 
 					<div class="articulo bloque">
-						<h2><a href="/{{ articulo_base_url }}/{{ articulo.id }}">{{ articulo.nombre }}</a></h2>
+						<h2><a class="tituloArticulo" href="/{{ articulo_base_url }}/{{ articulo.id }}">{{ articulo.nombre }}</a></h2>
 
 						{% if articulo.url_del_video and articulo.video_como_portada %}
 							<div class='yt-video' data-youtube-video='{{ articulo.url_del_video }}'></div>
@@ -100,7 +100,7 @@
 						{% endifnotequal %}
 
 						<div class="articulo bloque">
-							<h2><a href="/galeria/1">{{ chicas.nombre }}</a></h2>
+							<h2><a class="tituloArticulo" href="/galeria/1">{{ chicas.nombre }}</a></h2>
 									<a href="/galeria/1">
 										<img data-fbalbum-url='{{ chicas.url_del_album }}'>
 									</a>
@@ -140,7 +140,7 @@
 			{% for articulo in articulos %}
 				{% if forloop.counter > 4 %}
 					<div class="articulo bloque">
-						<h2><a href="/{{ articulo_base_url }}/{{ articulo.id }}">{{ articulo.nombre }}</a></h2>
+						<h2><a class="tituloArticulo" href="/{{ articulo_base_url }}/{{ articulo.id }}">{{ articulo.nombre }}</a></h2>
 
 						{% if articulo.url_del_video and articulo.video_como_portada %}
 							<div class='yt-video' data-youtube-video='{{ articulo.url_del_video }}'></div>
