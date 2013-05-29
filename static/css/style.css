@@ -57,7 +57,7 @@ nav ul ul li {
 	height: 30px;
 	line-height: 30px;
 	padding: 5px 20px;
-	background: rgba(0,0,0,0.5);
+	background: rgba(0,0,0,0.9);
 }
 
 nav ul li:hover > ul {
@@ -65,7 +65,7 @@ nav ul li:hover > ul {
 }
 
 nav ul ul li:hover {
-	background: rgba(0,0,0,0.8);
+	background: black;
 }
 
 footer {
@@ -102,6 +102,13 @@ footer {
 
 .music-player {
 	background: #151515;
+}
+
+.music-player .radio-text {
+	float: right;
+	line-height: 40px;
+	margin-right: 20px;
+	color: white;
 }
 
 .music-player #swf-player {
@@ -178,7 +185,7 @@ footer {
 }
 
 .articulo a.readon:hover {
-	text-decoration: underline;
+	text-shadow: 0px 0px 15px #09f;
 }
 
 .articulo iframe {
@@ -245,6 +252,7 @@ footer {
 	min-height: 800px;
 }
 
+
 .servicio {
 	background-color: rgba(0, 0, 0, 0.8);
 	border-radius: 3px;
@@ -297,7 +305,7 @@ footer {
 }
 
 .masInfoServicio:hover {
-	text-decoration: underline;
+	text-shadow: 0px 0px 15px #09f;
 }
 
 .sharing {
@@ -318,10 +326,60 @@ footer {
 	padding: 0px;
 }
 
+.daniel{
+	width: 576px;
+	float: left;
+	padding-left: 20px;
+	padding-top: 15px;
+}
+
+.textoFooterDaniel{
+	color: #645C5C;
+	font-size: 14px;
+	margin: 8px;
+}
+
+.textoContactoRomero{
+	text-decoration: none;
+	font-size: 14px;
+	color: white;
+	padding-left: 80px;
+}
+
+.textoContactoFooter{
+	text-decoration: none;
+	font-size: 14px;
+	color: white;
+}
+
+.textoFooterW3bex{
+	color: #645C5C;
+	font-size: 14px;
+	margin: 8px;
+	text-align: right;
+	padding-right: 6px;
+	padding-top: 15px;
+}
+
+.w3bex{
+	width: 140px;
+	height: 200px;
+	float: right;
+	padding-right: 20px;
+	/*border-left: solid 2px #645C5C;*/
+}
+
+.footerImgW3bex{
+	float: right;
+	margin-right: 5px;
+	margin-top: -5px;
+}
+
 #logo {
 	display: block;
 	margin: 0px auto 0px;
 }
+
 
 #galeria {
 	overflow: auto;
@@ -406,6 +464,11 @@ footer {
 
 #paginacion a {
 	color: #09f;
+	text-decoration: none;
+}
+
+#paginacion a:hover {
+	text-shadow: 0px 0px 15px #09f;
 }
 
 #paginacion {
