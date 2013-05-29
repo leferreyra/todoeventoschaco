@@ -11,7 +11,7 @@ import random
 def eventos(request):
 	#random.shuffle desordena la lista, para obtener siempre publicidades distintas
 	#hay que definir la cantidad de publicidades principales que vamos a mostrar
-	p_p = Publicidad.objects.filter(tipo = 'P')[:7]
+	p_p = Publicidad.objects.filter(tipo = 'P').order_by('id')[:7]
 
 	# random.shuffle() no devuelve nada, solo mezcla la lista
 
@@ -54,7 +54,7 @@ def eventos(request):
 
 def detalle_evento(request, id_evento):
 	#hay que definir la cantidad de publicidades que vamos a mostrar en esta seccion
-	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
+	p_p = Publicidad.objects.filter(tipo = 'P').order_by('id')[:7]
 
 	p_v = list(Publicidad.objects.filter(tipo = 'V'))
 	random.shuffle(p_v)
@@ -81,7 +81,7 @@ def detalle_evento(request, id_evento):
 
 def carteleras(request):
 	
-	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
+	p_p = Publicidad.objects.filter(tipo = 'P').order_by('id')[:7]
 
 	p_v = list(Publicidad.objects.filter(tipo = 'V'))
 	random.shuffle(p_v)
@@ -123,7 +123,7 @@ def carteleras(request):
 
 def detalle_cartelera(request, id_cartelera):
 	#hay que definir la cantidad de publicidades que vamos a mostrar en esta seccion
-	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
+	p_p = Publicidad.objects.filter(tipo = 'P').order_by('id')[:7]
 	
 	p_v = list(Publicidad.objects.filter(tipo = 'V'))
 	random.shuffle(p_v)
@@ -139,14 +139,15 @@ def detalle_cartelera(request, id_cartelera):
 			'p_p': p_p,
 			'p_v': p_v, 
 			'p_h': p_h, 
-			'banners': banners, 
+			'banners': banners,
+			'menu_activo': 'cartelera',
 			'cartelera': cartelera, 
 			'servicios': servicios
 		}, 
 		context_instance= RequestContext(request))
 
 def noches(request):
-	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
+	p_p = Publicidad.objects.filter(tipo = 'P').order_by('id')[:7]
 	p_v = list(Publicidad.objects.filter(tipo = 'V'))
 	random.shuffle(p_v)
 
@@ -184,7 +185,7 @@ def noches(request):
 
 
 def detalle_noche(request, id_noche):
-	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
+	p_p = Publicidad.objects.filter(tipo = 'P').order_by('id')[:7]
 	p_v = list(Publicidad.objects.filter(tipo = 'V'))
 	random.shuffle(p_v)
 
@@ -200,14 +201,15 @@ def detalle_noche(request, id_noche):
 			'p_v': p_v, 
 			'p_h': p_h, 
 			'banners': banners, 
-			'articulo': noche, 
+			'articulo': noche,
+			'menu_activo': 'noche',
 			'servicios': servicios
 		}, 
 		context_instance= RequestContext(request))
 
 def galerias(request):
 
-	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
+	p_p = Publicidad.objects.filter(tipo = 'P').order_by('id')[:7]
 	
 	p_v = list(Publicidad.objects.filter(tipo = 'V'))
 	random.shuffle(p_v)
@@ -246,7 +248,7 @@ def galerias(request):
 		context_instance=RequestContext(request))
 
 def detalle_galeria(request, id_galeria):
-	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
+	p_p = Publicidad.objects.filter(tipo = 'P').order_by('id')[:7]
 	p_v = list(Publicidad.objects.filter(tipo = 'V'))
 	random.shuffle(p_v)
 
@@ -261,14 +263,15 @@ def detalle_galeria(request, id_galeria):
 			'p_p': p_p, 
 			'p_v': p_v, 
 			'p_h': p_h, 
-			'banners': banners, 
-			'galeria': galeria, 
+			'banners': banners,
+			'menu_activo': 'galeria', 
+			'articulo': galeria, 
 			'servicios': servicios
 		}, 
 		context_instance= RequestContext(request))
 
 def comentarios(request):
-	p_p = Publicidad.objects.filter(tipo = 'P')[:8]
+	p_p = Publicidad.objects.filter(tipo = 'P').order_by('id')[:7]
 	p_v = list(Publicidad.objects.filter(tipo = 'V'))
 	random.shuffle(p_v)
 
@@ -289,7 +292,7 @@ def comentarios(request):
 		context_instance=RequestContext(request))
 
 def detalle_servicio(request, id_servicio):
-	p_p = Publicidad.objects.filter(tipo = 'P')[:7]
+	p_p = Publicidad.objects.filter(tipo = 'P').order_by('id')[:7]
 	p_v = list(Publicidad.objects.filter(tipo = 'V'))
 	random.shuffle(p_v)
 
@@ -305,14 +308,14 @@ def detalle_servicio(request, id_servicio):
 			'p_v': p_v, 
 			'p_h': p_h, 
 			'banners': banners, 
-			'comercios': comercios, 
+			'comercios': comercios,
 			'servicios': servicios, 
 			'menu_activo': 'servicios'
 		}, 
 		context_instance=RequestContext(request))
 
 def detalle_comercio(request, id_comercio):
-	p_p = Publicidad.objects.filter(tipo = 'P')[:7]
+	p_p = Publicidad.objects.filter(tipo = 'P').order_by('id')[:7]
 	p_v = list(Publicidad.objects.filter(tipo = 'V'))
 	random.shuffle(p_v)
 
