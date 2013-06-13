@@ -141,7 +141,7 @@ def detalle_cartelera(request, id_cartelera):
 			'p_h': p_h, 
 			'banners': banners,
 			'menu_activo': 'cartelera',
-			'cartelera': cartelera, 
+			'articulo': cartelera, 
 			'servicios': servicios
 		}, 
 		context_instance= RequestContext(request))
